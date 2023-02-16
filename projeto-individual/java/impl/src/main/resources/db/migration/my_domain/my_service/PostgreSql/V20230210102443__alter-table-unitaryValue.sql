@@ -1,0 +1,1 @@
+alter table item alter column unitary_value drop not null;

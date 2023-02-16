@@ -1,0 +1,79 @@
+domain my_domain
+
+service my_service {
+    endpoints {
+    // add actions, queries, events and signals here
+        query helloWorld {
+            in {
+                who : string
+            }
+            out {
+                helloWorldMessage : string
+            }
+        }
+        //REPOSITÓRIO CLIENTE
+
+                query findByName{
+                    in {
+                        name: string
+                    }
+                    out {
+                        response: client*
+                    }
+                }
+                //REPOSITÓRIO PRODUTO
+                query findPriceGreater{
+                    in {
+                        value: money
+                    }
+                    out{
+                        response: product*
+                    }
+                }
+
+    }
+    types {
+    // define records and enumerations here
+
+    }
+    entities {
+            entity client{
+
+                id: uuid?
+                name: string
+                cpf: string
+                birthday: date
+                active: boolean? default: true
+            }
+
+            entity product{
+
+                id: uuid?
+                name: string
+                description: string
+                price: money
+                stock: integer
+                active: boolean? default: true
+
+            }
+
+            entity pedido{
+
+                id: uuid?
+                client: client
+                items: item?*
+                orderDate: date
+                finalValue: money?
+            }
+
+            entity item{
+                id: uuid?
+                pedido: pedido?
+                product: product
+                quantity: integer
+                unitaryValue: money?
+                totalValue: money?
+            }
+
+    }
+} 

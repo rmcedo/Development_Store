@@ -1,0 +1,773 @@
+{
+	"version": "0.0.1",
+	"edlVersion": "31.1.1",
+	"app": "projeto-individual",
+	"domain": "my_domain",
+	"service": "my_service",
+	"enumType": "string",
+	"enumerations": {
+	},
+	"entities": {
+		"client": {
+			"id": "id",
+			"name": "client",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"name": {
+					"name": "name",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"cpf": {
+					"name": "cpf",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"birthday": {
+					"name": "birthday",
+					"type": "date",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"active": {
+					"name": "active",
+					"type": "boolean",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false,
+					"default": true
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "cpf",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "birthday",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"cpf",
+					"birthday",
+					"active"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "cpf",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "birthday",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"cpf",
+					"birthday",
+					"active"
+				]
+			}
+		},
+		"product": {
+			"id": "id",
+			"name": "product",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"name": {
+					"name": "name",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"description": {
+					"name": "description",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"price": {
+					"name": "price",
+					"type": "money",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"stock": {
+					"name": "stock",
+					"type": "integer",
+					"thousandSeparator": ".",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"active": {
+					"name": "active",
+					"type": "boolean",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false,
+					"default": true
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "description",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "price",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "stock",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"description",
+					"price",
+					"stock",
+					"active"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "description",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "price",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "stock",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"description",
+					"price",
+					"stock",
+					"active"
+				]
+			}
+		},
+		"pedido": {
+			"id": "id",
+			"name": "pedido",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"client": {
+					"name": "client",
+					"type": "client",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"items": {
+					"name": "items",
+					"type": "item",
+					"optional": true,
+					"hidden": false,
+					"multivalued": true,
+					"readOnly": false
+				},
+				"orderDate": {
+					"name": "orderDate",
+					"type": "date",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"finalValue": {
+					"name": "finalValue",
+					"type": "money",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "orderDate",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "finalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"orderDate",
+					"finalValue"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "orderDate",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "finalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"orderDate",
+					"finalValue"
+				]
+			},
+			"relationships": {
+				"item": [
+					{
+						"type": "composition",
+						"attribute": "items",
+						"ownerEntity": "pedido",
+						"entityName": "item",
+						"optional": true,
+						"filterDependent": false,
+						"multivalued": true,
+						"lookup": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "quantity",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "unitaryValue",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "totalValue",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"quantity",
+								"unitaryValue",
+								"totalValue"
+							]
+						},
+						"advancedSearch": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "quantity",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "unitaryValue",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "totalValue",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"quantity",
+								"unitaryValue",
+								"totalValue"
+							]
+						}
+					}
+				]
+				,"client": [
+					{
+						"type": "aggregation",
+						"attribute": "client",
+						"ownerEntity": "pedido",
+						"entityName": "client",
+						"optional": false,
+						"filterDependent": false,
+						"multivalued": false,
+						"lookup": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "cpf",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "birthday",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"cpf",
+								"birthday",
+								"active"
+							]
+						},
+						"advancedSearch": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "cpf",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "birthday",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"cpf",
+								"birthday",
+								"active"
+							]
+						}
+					}
+				]
+			}
+		},
+		"item": {
+			"id": "id",
+			"name": "item",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"pedido": {
+					"name": "pedido",
+					"type": "pedido",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"product": {
+					"name": "product",
+					"type": "product",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"quantity": {
+					"name": "quantity",
+					"type": "integer",
+					"thousandSeparator": ".",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"unitaryValue": {
+					"name": "unitaryValue",
+					"type": "money",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"totalValue": {
+					"name": "totalValue",
+					"type": "money",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "quantity",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "unitaryValue",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "totalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"quantity",
+					"unitaryValue",
+					"totalValue"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "quantity",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "unitaryValue",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "totalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"quantity",
+					"unitaryValue",
+					"totalValue"
+				]
+			},
+			"relationships": {
+				"product": [
+					{
+						"type": "aggregation",
+						"attribute": "product",
+						"ownerEntity": "item",
+						"entityName": "product",
+						"optional": false,
+						"filterDependent": false,
+						"multivalued": false,
+						"lookup": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "description",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "price",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "stock",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"description",
+								"price",
+								"stock",
+								"active"
+							]
+						},
+						"advancedSearch": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "description",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "price",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "stock",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"description",
+								"price",
+								"stock",
+								"active"
+							]
+						}
+					}
+				]
+			}
+		}
+	},
+	"translations": {
+		"my_domain.my_service.client": "",
+		"my_domain.my_service.client_id": "",
+		"my_domain.my_service.client_name": "",
+		"my_domain.my_service.client_cpf": "",
+		"my_domain.my_service.client_birthday": "",
+		"my_domain.my_service.client_active": "",
+		"my_domain.my_service.item": "",
+		"my_domain.my_service.item_id": "",
+		"my_domain.my_service.item_pedido": "",
+		"my_domain.my_service.item_product": "",
+		"my_domain.my_service.item_quantity": "",
+		"my_domain.my_service.item_unitary_value": "",
+		"my_domain.my_service.item_total_value": "",
+		"my_domain.my_service.pedido": "",
+		"my_domain.my_service.pedido_id": "",
+		"my_domain.my_service.pedido_client": "",
+		"my_domain.my_service.pedido_items": "",
+		"my_domain.my_service.pedido_order_date": "",
+		"my_domain.my_service.pedido_final_value": "",
+		"my_domain.my_service.product": "",
+		"my_domain.my_service.product_id": "",
+		"my_domain.my_service.product_name": "",
+		"my_domain.my_service.product_description": "",
+		"my_domain.my_service.product_price": "",
+		"my_domain.my_service.product_stock": "",
+		"my_domain.my_service.product_active": ""
+	}
+}
