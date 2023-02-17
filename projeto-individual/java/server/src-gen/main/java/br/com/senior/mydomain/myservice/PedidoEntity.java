@@ -32,22 +32,37 @@ public class PedidoEntity extends CustomEntity implements Persistable<java.util.
 	
 	public static final String SECURITY_RESOURCE = "res://senior.com.br/my_domain/my_service/entities/pedido";
 
+	/**
+	 * ID do Pedido, gerado automaticamente
+	 */
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name = "id", updatable = false)
 	private java.util.UUID id;
 	
+	/**
+	 * ID do Cliente que está realizando o Pedido
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client")
 	private ClientEntity client;
 	
+	/**
+	 * Lista de Itens de Produtos que contém no Pedido
+	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private java.util.List<ItemEntity> items = new ArrayList<>();
 	
+	/**
+	 * Data de realização do Pedido
+	 */
 	@Column(name = "order_date")
 	private java.time.LocalDate orderDate;
 	
+	/**
+	 * Valor Final do Pedido, somando os valor totais dos itens do Pedido
+	 */
 	@Column(name = "final_value")
 	private java.math.BigDecimal finalValue;
 	

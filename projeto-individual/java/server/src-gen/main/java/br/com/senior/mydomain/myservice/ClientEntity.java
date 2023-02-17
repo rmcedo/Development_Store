@@ -25,21 +25,36 @@ public class ClientEntity extends CustomEntity implements Persistable<java.util.
 	
 	public static final String SECURITY_RESOURCE = "res://senior.com.br/my_domain/my_service/entities/client";
 
+	/**
+	 * ID gerado automaticamente
+	 */
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name = "id", updatable = false)
 	private java.util.UUID id;
 	
+	/**
+	 * Nome do Cliente
+	 */
 	@Column(name = "name")
 	private String name;
 	
+	/**
+	 * CPF do Cliente
+	 */
 	@Column(name = "cpf")
 	private String cpf;
 	
+	/**
+	 * Data de nascimento do Cliente
+	 */
 	@Column(name = "birthday")
 	private java.time.LocalDate birthday;
 	
+	/**
+	 * ACTIVE: verifica se o cliente está ativo ou não, para que haja apenas exclusão lógica do Cliente
+	 */
 	@Column(name = "active")
 	private Boolean active;
 	

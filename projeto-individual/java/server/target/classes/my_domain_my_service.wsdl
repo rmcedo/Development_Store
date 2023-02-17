@@ -418,10 +418,62 @@
              </xsd:simpleType>
             
             <!-- Message payload elements for signals -->
+            <xsd:element name="ativarCliente">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
             
             <!-- Message input/output elements for commands -->
             <xsd:element name="updateMergePedido">
                 <xsd:complexType/>
+            </xsd:element>
+            <xsd:element name="findProductPriceLess">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="price" type="xsd:decimal" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findProductPriceLessOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findByCpf">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="cpf" type="xsd:string" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findByCpfOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="client" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
             </xsd:element>
             <xsd:element name="updateProduct">
                 <xsd:complexType/>
@@ -450,8 +502,74 @@
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:element name="findProductStockGreater">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="stock" type="xsd:long" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findProductStockGreaterOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findProductStockLess">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="stock" type="xsd:long" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findProductStockLessOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element name="updatePedido">
                 <xsd:complexType/>
+            </xsd:element>
+            <xsd:element name="findByFinalValueGreater">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="finalValue" type="xsd:decimal" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findByFinalValueGreaterOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="pedido" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
             </xsd:element>
             <xsd:element name="deletePedido_Items" type="uuid"/>
             <xsd:element name="deleteProduct">
@@ -525,6 +643,28 @@
             </xsd:element>
             <xsd:element name="updateItem">
                 <xsd:complexType/>
+            </xsd:element>
+            <xsd:element name="findByBirthday">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="birthday" type="xsd:date" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findByBirthdayOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="client" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
             </xsd:element>
             <xsd:element name="importPedido">
                 <xsd:complexType>
@@ -743,6 +883,30 @@
             <xsd:element name="updateMergeClient">
                 <xsd:complexType/>
             </xsd:element>
+            <xsd:element name="findDateBetween">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="date1" type="xsd:date" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                        <xsd:element name="date2" type="xsd:date" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findDateBetweenOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="pedido" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element name="createPedido_Items">
                 <xsd:complexType/>
             </xsd:element>
@@ -861,6 +1025,50 @@
                             <xsd:complexType>
                                 <xsd:sequence>
                                     <xsd:element name="item" type="dependency" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findByActiveTrue">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="active" type="xsd:boolean" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findByActiveTrueOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="client" minOccurs="1" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findProductByName">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"  readOnly="false">
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="findProductByNameOutput">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <!-- collection wrapper for response -->
+                        <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
                                 </xsd:sequence>
                             </xsd:complexType>
                         </xsd:element>
@@ -1007,6 +1215,18 @@
     <wsdl:message name="updateMergePedidoResponse">
         <wsdl:part name="result" element="updateMergePedidoOutput"/>
     </wsdl:message>
+    <wsdl:message name="findProductPriceLessRequest">
+        <wsdl:part name="parameters" element="findProductPriceLess"/>
+    </wsdl:message>
+    <wsdl:message name="findProductPriceLessResponse">
+        <wsdl:part name="result" element="findProductPriceLessOutput"/>
+    </wsdl:message>
+    <wsdl:message name="findByCpfRequest">
+        <wsdl:part name="parameters" element="findByCpf"/>
+    </wsdl:message>
+    <wsdl:message name="findByCpfResponse">
+        <wsdl:part name="result" element="findByCpfOutput"/>
+    </wsdl:message>
     <wsdl:message name="updateProductRequest">
         <wsdl:part name="toUpdate" element="updateProduct"/>
     </wsdl:message>
@@ -1025,11 +1245,29 @@
     <wsdl:message name="retrieveProductResponse">
         <wsdl:part name="retrieved" element="retrieveProductOutput"/>
     </wsdl:message>
+    <wsdl:message name="findProductStockGreaterRequest">
+        <wsdl:part name="parameters" element="findProductStockGreater"/>
+    </wsdl:message>
+    <wsdl:message name="findProductStockGreaterResponse">
+        <wsdl:part name="result" element="findProductStockGreaterOutput"/>
+    </wsdl:message>
+    <wsdl:message name="findProductStockLessRequest">
+        <wsdl:part name="parameters" element="findProductStockLess"/>
+    </wsdl:message>
+    <wsdl:message name="findProductStockLessResponse">
+        <wsdl:part name="result" element="findProductStockLessOutput"/>
+    </wsdl:message>
     <wsdl:message name="updatePedidoRequest">
         <wsdl:part name="toUpdate" element="updatePedido"/>
     </wsdl:message>
     <wsdl:message name="updatePedidoResponse">
         <wsdl:part name="updated" element="updatePedidoOutput"/>
+    </wsdl:message>
+    <wsdl:message name="findByFinalValueGreaterRequest">
+        <wsdl:part name="parameters" element="findByFinalValueGreater"/>
+    </wsdl:message>
+    <wsdl:message name="findByFinalValueGreaterResponse">
+        <wsdl:part name="result" element="findByFinalValueGreaterOutput"/>
     </wsdl:message>
     <wsdl:message name="deletePedido_ItemsRequest">
         <wsdl:part name="toDelete" element="deletePedido_Items"/>
@@ -1081,6 +1319,12 @@
     </wsdl:message>
     <wsdl:message name="updateItemResponse">
         <wsdl:part name="updated" element="updateItemOutput"/>
+    </wsdl:message>
+    <wsdl:message name="findByBirthdayRequest">
+        <wsdl:part name="parameters" element="findByBirthday"/>
+    </wsdl:message>
+    <wsdl:message name="findByBirthdayResponse">
+        <wsdl:part name="result" element="findByBirthdayOutput"/>
     </wsdl:message>
     <wsdl:message name="importPedidoRequest">
         <wsdl:part name="parameters" element="importPedido"/>
@@ -1172,6 +1416,12 @@
     <wsdl:message name="updateMergeClientResponse">
         <wsdl:part name="result" element="updateMergeClientOutput"/>
     </wsdl:message>
+    <wsdl:message name="findDateBetweenRequest">
+        <wsdl:part name="parameters" element="findDateBetween"/>
+    </wsdl:message>
+    <wsdl:message name="findDateBetweenResponse">
+        <wsdl:part name="result" element="findDateBetweenOutput"/>
+    </wsdl:message>
     <wsdl:message name="createPedido_ItemsRequest">
         <wsdl:part name="toCreate" element="createPedido_Items"/>
     </wsdl:message>
@@ -1226,6 +1476,18 @@
     <wsdl:message name="getDependenciesResponse">
         <wsdl:part name="result" element="getDependenciesOutput"/>
     </wsdl:message>
+    <wsdl:message name="findByActiveTrueRequest">
+        <wsdl:part name="parameters" element="findByActiveTrue"/>
+    </wsdl:message>
+    <wsdl:message name="findByActiveTrueResponse">
+        <wsdl:part name="result" element="findByActiveTrueOutput"/>
+    </wsdl:message>
+    <wsdl:message name="findProductByNameRequest">
+        <wsdl:part name="parameters" element="findProductByName"/>
+    </wsdl:message>
+    <wsdl:message name="findProductByNameResponse">
+        <wsdl:part name="result" element="findProductByNameOutput"/>
+    </wsdl:message>
     <wsdl:message name="findByNameRequest">
         <wsdl:part name="parameters" element="findByName"/>
     </wsdl:message>
@@ -1246,6 +1508,9 @@
     </wsdl:message>
     <wsdl:message name="retrievePedidoResponse">
         <wsdl:part name="retrieved" element="retrievePedidoOutput"/>
+    </wsdl:message>
+    <wsdl:message name="ativarClienteSignal">
+        <wsdl:part name="parameters" element="ativarCliente"/>
     </wsdl:message>
     <wsdl:message name="createMergeItemRequest">
         <wsdl:part name="parameters" element="createMergeItem"/>
@@ -1302,6 +1567,22 @@
             <wsdl:input message="updateMergePedidoRequest"/>
             <wsdl:output message="updateMergePedidoResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="findProductPriceLess">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price 
+            </wsdl:documentation>
+            <wsdl:input message="findProductPriceLessRequest"/>
+            <wsdl:output message="findProductPriceLessResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findByCpf">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Cliente com CPF igual ao passado como parametro 
+            </wsdl:documentation>
+            <wsdl:input message="findByCpfRequest"/>
+            <wsdl:output message="findByCpfResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="updateProduct">
             <wsdl:documentation>
             THIS OPERATION IS PUBLIC. 
@@ -1325,6 +1606,22 @@
             <wsdl:input message="retrieveProductRequest"/>
             <wsdl:output message="retrieveProductResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="findProductStockGreater">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock 
+            </wsdl:documentation>
+            <wsdl:input message="findProductStockGreaterRequest"/>
+            <wsdl:output message="findProductStockGreaterResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findProductStockLess">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock 
+            </wsdl:documentation>
+            <wsdl:input message="findProductStockLessRequest"/>
+            <wsdl:output message="findProductStockLessResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="updatePedido">
             <wsdl:documentation>
             THIS OPERATION IS PUBLIC. 
@@ -1332,6 +1629,13 @@
             </wsdl:documentation>
             <wsdl:input message="updatePedidoRequest"/>
             <wsdl:output message="updatePedidoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findByFinalValueGreater">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            </wsdl:documentation>
+            <wsdl:input message="findByFinalValueGreaterRequest"/>
+            <wsdl:output message="findByFinalValueGreaterResponse"/>
         </wsdl:operation>
         <wsdl:operation name="deletePedido_Items">
             <wsdl:documentation>
@@ -1413,6 +1717,14 @@
             <wsdl:input message="updateItemRequest"/>
             <wsdl:output message="updateItemResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="findByBirthday">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para encontrar Clientes com nascimento no mesmo dia 
+            </wsdl:documentation>
+            <wsdl:input message="findByBirthdayRequest"/>
+            <wsdl:output message="findByBirthdayResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="importPedido">
             <wsdl:documentation>
             WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
@@ -1492,6 +1804,7 @@
         <wsdl:operation name="findPriceGreater">
             <wsdl:documentation>
             WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value 
             </wsdl:documentation>
             <wsdl:input message="findPriceGreaterRequest"/>
             <wsdl:output message="findPriceGreaterResponse"/>
@@ -1526,6 +1839,14 @@
             </wsdl:documentation>
             <wsdl:input message="updateMergeClientRequest"/>
             <wsdl:output message="updateMergeClientResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findDateBetween">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2 
+            </wsdl:documentation>
+            <wsdl:input message="findDateBetweenRequest"/>
+            <wsdl:output message="findDateBetweenResponse"/>
         </wsdl:operation>
         <wsdl:operation name="createPedido_Items">
             <wsdl:documentation>
@@ -1598,9 +1919,26 @@
             <wsdl:input message="getDependenciesRequest"/>
             <wsdl:output message="getDependenciesResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="findByActiveTrue">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema 
+            </wsdl:documentation>
+            <wsdl:input message="findByActiveTrueRequest"/>
+            <wsdl:output message="findByActiveTrueResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findProductByName">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome 
+            </wsdl:documentation>
+            <wsdl:input message="findProductByNameRequest"/>
+            <wsdl:output message="findProductByNameResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="findByName">
             <wsdl:documentation>
             WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição 
             </wsdl:documentation>
             <wsdl:input message="findByNameRequest"/>
             <wsdl:output message="findByNameResponse"/>
@@ -1627,6 +1965,12 @@
             </wsdl:documentation>
             <wsdl:input message="retrievePedidoRequest"/>
             <wsdl:output message="retrievePedidoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="ativarCliente">
+            <wsdl:documentation>
+            WARNING: THIS OPERATION IS PRIVATE AND MAY HAVE ITS BEHAVIOR CHANGED AT ANY TIME WITHOUT NOTICE. 
+            </wsdl:documentation>
+            <wsdl:input message="ativarClienteSignal"/>
         </wsdl:operation>
         <wsdl:operation name="createMergeItem">
             <wsdl:documentation>
@@ -1705,6 +2049,24 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="findProductPriceLess">
+            <soap:operation soapAction="findProductPriceLess"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findByCpf">
+            <soap:operation soapAction="findByCpf"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="updateProduct">
             <soap:operation soapAction="updateProduct"/>
             <wsdl:input>
@@ -1732,8 +2094,35 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="findProductStockGreater">
+            <soap:operation soapAction="findProductStockGreater"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProductStockLess">
+            <soap:operation soapAction="findProductStockLess"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="updatePedido">
             <soap:operation soapAction="updatePedido"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findByFinalValueGreater">
+            <soap:operation soapAction="findByFinalValueGreater"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1824,6 +2213,15 @@
         </wsdl:operation>
         <wsdl:operation name="updateItem">
             <soap:operation soapAction="updateItem"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findByBirthday">
+            <soap:operation soapAction="findByBirthday"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1966,6 +2364,15 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="findDateBetween">
+            <soap:operation soapAction="findDateBetween"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="createPedido_Items">
             <soap:operation soapAction="createPedido_Items"/>
             <wsdl:input>
@@ -2047,6 +2454,24 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="findByActiveTrue">
+            <soap:operation soapAction="findByActiveTrue"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProductByName">
+            <soap:operation soapAction="findProductByName"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="findByName">
             <soap:operation soapAction="findByName"/>
             <wsdl:input>
@@ -2082,6 +2507,12 @@
             <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ativarCliente">
+            <soap:operation soapAction="ativarCliente"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="createMergeItem">
             <soap:operation soapAction="createMergeItem"/>

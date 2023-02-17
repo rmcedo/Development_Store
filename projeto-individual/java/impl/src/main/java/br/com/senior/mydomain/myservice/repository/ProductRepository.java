@@ -15,4 +15,11 @@ public interface ProductRepository extends ProductBaseRepository {
     //NÃO ESTOU UTILIZANDO O QUERY METHOD APENAS PARA NÍVEL DE DEMONSTRAÇÃO, PARA UTILIZAR DIFERENTES ABORDAGENS DENTRO DO PROJETO
     @Query("SELECT p FROM my_domain.my_service.ProductEntity p WHERE p.price > :value")
     List<ProductEntity> findProductWithPriceGreaterThen(@Param("value") BigDecimal value);
+
+    List<ProductEntity> findByNameContainingIgnoreCase(String name);
+    List<ProductEntity> findByPriceLessThan(BigDecimal price);
+
+    List<ProductEntity> findByStockLessThan(Long stock);
+
+    List<ProductEntity> findByStockGreaterThan(Long stock);
 }

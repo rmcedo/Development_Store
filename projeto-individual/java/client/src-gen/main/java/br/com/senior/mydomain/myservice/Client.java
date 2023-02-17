@@ -9,6 +9,9 @@ import br.com.senior.messaging.model.EntityDescription;
 import br.com.senior.messaging.model.EntityId;
 import br.com.senior.custom.CustomDTO;
 
+/**
+ * Entidade Cliente
+ */
 @EntityDescription
 public class Client extends CustomDTO {
     
@@ -108,17 +111,32 @@ public class Client extends CustomDTO {
     }
 
     @EntityId
+    /**
+     * ID gerado automaticamente
+     */
     public String id;
     
+    /**
+     * Nome do Cliente
+     */
     @NotNull(message = "name is required")
     public String name;
     
+    /**
+     * CPF do Cliente
+     */
     @NotNull(message = "cpf is required")
     public String cpf;
     
+    /**
+     * Data de nascimento do Cliente
+     */
     @NotNull(message = "birthday is required")
     public java.time.LocalDate birthday;
     
+    /**
+     * ACTIVE: verifica se o cliente está ativo ou não, para que haja apenas exclusão lógica do Cliente
+     */
     public Boolean active = true;
     
     

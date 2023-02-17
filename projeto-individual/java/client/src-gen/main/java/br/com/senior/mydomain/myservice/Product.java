@@ -9,6 +9,9 @@ import br.com.senior.messaging.model.EntityDescription;
 import br.com.senior.messaging.model.EntityId;
 import br.com.senior.custom.CustomDTO;
 
+/**
+ * Entidade Produto
+ */
 @EntityDescription
 public class Product extends CustomDTO {
     
@@ -108,20 +111,38 @@ public class Product extends CustomDTO {
     }
 
     @EntityId
+    /**
+     * ID do produto gerado automaticamente
+     */
     public String id;
     
+    /**
+     * Nome do Produto
+     */
     @NotNull(message = "name is required")
     public String name;
     
+    /**
+     * Descrição/Características do Produto
+     */
     @NotNull(message = "description is required")
     public String description;
     
+    /**
+     * Preço do Produto
+     */
     @NotNull(message = "price is required")
     public java.math.BigDecimal price;
     
+    /**
+     * Quantidade de Estoque do Produto
+     */
     @NotNull(message = "stock is required")
     public Long stock;
     
+    /**
+     * Mesma lógica de active de CLIENTE, LER ACIMA
+     */
     public Boolean active = true;
     
     

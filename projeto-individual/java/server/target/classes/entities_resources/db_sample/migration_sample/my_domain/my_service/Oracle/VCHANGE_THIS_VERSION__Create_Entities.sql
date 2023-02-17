@@ -1,4 +1,4 @@
-/* Database: Oracle. Generation date: 2023-02-15 14:21:31:601 */
+/* Database: Oracle. Generation date: 2023-02-17 15:48:55:524 */
 /* Entity Client */
 create table client (
 	id RAW(16) NOT NULL,
@@ -69,9 +69,9 @@ alter table pedido add constraint pk_pedido_id primary key(id);
 alter table item add constraint pk_item_id primary key(id);
 
 /* Foreign Key Constraints */
-alter table pedido add constraint fk5vef8g3qdj9m4tcrumyuqdwnqjbk foreign key (client) references client (id);
-alter table item add constraint fkwtbjofyll8fhpn1daxhte67zcjec foreign key (pedido) references pedido (id);
-alter table item add constraint fkesrfmhxoxif0fyig8vmdwmtvz3jm foreign key (product) references product (id);
+alter table pedido add constraint fkeq84j8a2uxikuizrpntnirm0o6y8 foreign key (client) references client (id);
+alter table item add constraint fkai919c0yrl2eyqdfskxnoseodfio foreign key (pedido) references pedido (id);
+alter table item add constraint fkfgq1rvrujy7dbysbf8v6w8pes60i foreign key (product) references product (id);
 
 /* Unique Key Constraints */
 alter table product add constraint uk_name unique (name);

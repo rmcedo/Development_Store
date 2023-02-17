@@ -88,7 +88,7 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	/**
 	 * Chamada síncrona para o método findByName
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
 	 */
 	@Override
@@ -100,7 +100,7 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	/**
 	 * Chamada assíncrona para o método findByName
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	 */
 	@Override
 	public void findByName(FindByNameInput input) {
@@ -111,7 +111,7 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	/**
 	 * Chamada assíncrona para o método findByName
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	 */
 	@Override
 	public CompletableFuture<FindByNameOutput> findByNameRequest(FindByNameInput input) {
@@ -121,7 +121,7 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	/**
 	 * Chamada assíncrona para o método findByName
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	*/
 	@Override
 	public CompletableFuture<FindByNameOutput> findByNameRequest(FindByNameInput input, long timeout) {
@@ -129,9 +129,138 @@ public class MyServiceStubImpl  implements MyServiceStub {
 		return impl.findByNameRequest(input, timeout, TimeUnit.MILLISECONDS);
 	}
 	/**
+	 * Chamada síncrona para o método findByCpf
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindByCpfOutput findByCpf(FindByCpfInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByCpfImpl impl = new br.com.senior.mydomain.myservice.impl.FindByCpfImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByCpf(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByCpf
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	 */
+	@Override
+	public void findByCpf(FindByCpfInput input) {
+		br.com.senior.mydomain.myservice.impl.FindByCpfImpl impl = new br.com.senior.mydomain.myservice.impl.FindByCpfImpl(messengerSupplier, userId, messageSupplier);
+		impl.findByCpf(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByCpf
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	 */
+	@Override
+	public CompletableFuture<FindByCpfOutput> findByCpfRequest(FindByCpfInput input) {
+		return this.findByCpfRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByCpf
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	*/
+	@Override
+	public CompletableFuture<FindByCpfOutput> findByCpfRequest(FindByCpfInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByCpfImpl impl = new br.com.senior.mydomain.myservice.impl.FindByCpfImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByCpfRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findByBirthday
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindByBirthdayOutput findByBirthday(FindByBirthdayInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByBirthdayImpl impl = new br.com.senior.mydomain.myservice.impl.FindByBirthdayImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByBirthday(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByBirthday
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	 */
+	@Override
+	public void findByBirthday(FindByBirthdayInput input) {
+		br.com.senior.mydomain.myservice.impl.FindByBirthdayImpl impl = new br.com.senior.mydomain.myservice.impl.FindByBirthdayImpl(messengerSupplier, userId, messageSupplier);
+		impl.findByBirthday(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByBirthday
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	 */
+	@Override
+	public CompletableFuture<FindByBirthdayOutput> findByBirthdayRequest(FindByBirthdayInput input) {
+		return this.findByBirthdayRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByBirthday
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	*/
+	@Override
+	public CompletableFuture<FindByBirthdayOutput> findByBirthdayRequest(FindByBirthdayInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByBirthdayImpl impl = new br.com.senior.mydomain.myservice.impl.FindByBirthdayImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByBirthdayRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findByActiveTrue
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindByActiveTrueOutput findByActiveTrue(FindByActiveTrueInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByActiveTrueImpl impl = new br.com.senior.mydomain.myservice.impl.FindByActiveTrueImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByActiveTrue(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByActiveTrue
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	 */
+	@Override
+	public void findByActiveTrue(FindByActiveTrueInput input) {
+		br.com.senior.mydomain.myservice.impl.FindByActiveTrueImpl impl = new br.com.senior.mydomain.myservice.impl.FindByActiveTrueImpl(messengerSupplier, userId, messageSupplier);
+		impl.findByActiveTrue(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByActiveTrue
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	 */
+	@Override
+	public CompletableFuture<FindByActiveTrueOutput> findByActiveTrueRequest(FindByActiveTrueInput input) {
+		return this.findByActiveTrueRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByActiveTrue
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	*/
+	@Override
+	public CompletableFuture<FindByActiveTrueOutput> findByActiveTrueRequest(FindByActiveTrueInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByActiveTrueImpl impl = new br.com.senior.mydomain.myservice.impl.FindByActiveTrueImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByActiveTrueRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
 	 * Chamada síncrona para o método findPriceGreater
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
 	 */
 	@Override
@@ -143,7 +272,7 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	/**
 	 * Chamada assíncrona para o método findPriceGreater
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	 */
 	@Override
 	public void findPriceGreater(FindPriceGreaterInput input) {
@@ -154,7 +283,7 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	/**
 	 * Chamada assíncrona para o método findPriceGreater
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	 */
 	@Override
 	public CompletableFuture<FindPriceGreaterOutput> findPriceGreaterRequest(FindPriceGreaterInput input) {
@@ -164,12 +293,270 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	/**
 	 * Chamada assíncrona para o método findPriceGreater
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	*/
 	@Override
 	public CompletableFuture<FindPriceGreaterOutput> findPriceGreaterRequest(FindPriceGreaterInput input, long timeout) {
 		br.com.senior.mydomain.myservice.impl.FindPriceGreaterImpl impl = new br.com.senior.mydomain.myservice.impl.FindPriceGreaterImpl(messengerSupplier, userId, messageSupplier);
 		return impl.findPriceGreaterRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findProductByName
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindProductByNameOutput findProductByName(FindProductByNameInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductByNameImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductByNameImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductByName(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductByName
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	 */
+	@Override
+	public void findProductByName(FindProductByNameInput input) {
+		br.com.senior.mydomain.myservice.impl.FindProductByNameImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductByNameImpl(messengerSupplier, userId, messageSupplier);
+		impl.findProductByName(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductByName
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	 */
+	@Override
+	public CompletableFuture<FindProductByNameOutput> findProductByNameRequest(FindProductByNameInput input) {
+		return this.findProductByNameRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductByName
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	*/
+	@Override
+	public CompletableFuture<FindProductByNameOutput> findProductByNameRequest(FindProductByNameInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductByNameImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductByNameImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductByNameRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findProductPriceLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindProductPriceLessOutput findProductPriceLess(FindProductPriceLessInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductPriceLessImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductPriceLessImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductPriceLess(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductPriceLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	 */
+	@Override
+	public void findProductPriceLess(FindProductPriceLessInput input) {
+		br.com.senior.mydomain.myservice.impl.FindProductPriceLessImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductPriceLessImpl(messengerSupplier, userId, messageSupplier);
+		impl.findProductPriceLess(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductPriceLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	 */
+	@Override
+	public CompletableFuture<FindProductPriceLessOutput> findProductPriceLessRequest(FindProductPriceLessInput input) {
+		return this.findProductPriceLessRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductPriceLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	*/
+	@Override
+	public CompletableFuture<FindProductPriceLessOutput> findProductPriceLessRequest(FindProductPriceLessInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductPriceLessImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductPriceLessImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductPriceLessRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findProductStockLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindProductStockLessOutput findProductStockLess(FindProductStockLessInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductStockLessImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductStockLessImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductStockLess(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductStockLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	 */
+	@Override
+	public void findProductStockLess(FindProductStockLessInput input) {
+		br.com.senior.mydomain.myservice.impl.FindProductStockLessImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductStockLessImpl(messengerSupplier, userId, messageSupplier);
+		impl.findProductStockLess(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductStockLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	 */
+	@Override
+	public CompletableFuture<FindProductStockLessOutput> findProductStockLessRequest(FindProductStockLessInput input) {
+		return this.findProductStockLessRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductStockLess
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	*/
+	@Override
+	public CompletableFuture<FindProductStockLessOutput> findProductStockLessRequest(FindProductStockLessInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductStockLessImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductStockLessImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductStockLessRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findProductStockGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindProductStockGreaterOutput findProductStockGreater(FindProductStockGreaterInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductStockGreaterImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductStockGreaterImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductStockGreater(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductStockGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	 */
+	@Override
+	public void findProductStockGreater(FindProductStockGreaterInput input) {
+		br.com.senior.mydomain.myservice.impl.FindProductStockGreaterImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductStockGreaterImpl(messengerSupplier, userId, messageSupplier);
+		impl.findProductStockGreater(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductStockGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	 */
+	@Override
+	public CompletableFuture<FindProductStockGreaterOutput> findProductStockGreaterRequest(FindProductStockGreaterInput input) {
+		return this.findProductStockGreaterRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findProductStockGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	*/
+	@Override
+	public CompletableFuture<FindProductStockGreaterOutput> findProductStockGreaterRequest(FindProductStockGreaterInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindProductStockGreaterImpl impl = new br.com.senior.mydomain.myservice.impl.FindProductStockGreaterImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findProductStockGreaterRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findDateBetween
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindDateBetweenOutput findDateBetween(FindDateBetweenInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindDateBetweenImpl impl = new br.com.senior.mydomain.myservice.impl.FindDateBetweenImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findDateBetween(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findDateBetween
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	 */
+	@Override
+	public void findDateBetween(FindDateBetweenInput input) {
+		br.com.senior.mydomain.myservice.impl.FindDateBetweenImpl impl = new br.com.senior.mydomain.myservice.impl.FindDateBetweenImpl(messengerSupplier, userId, messageSupplier);
+		impl.findDateBetween(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findDateBetween
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	 */
+	@Override
+	public CompletableFuture<FindDateBetweenOutput> findDateBetweenRequest(FindDateBetweenInput input) {
+		return this.findDateBetweenRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findDateBetween
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	*/
+	@Override
+	public CompletableFuture<FindDateBetweenOutput> findDateBetweenRequest(FindDateBetweenInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindDateBetweenImpl impl = new br.com.senior.mydomain.myservice.impl.FindDateBetweenImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findDateBetweenRequest(input, timeout, TimeUnit.MILLISECONDS);
+	}
+	/**
+	 * Chamada síncrona para o método findByFinalValueGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	 * @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
+	 */
+	@Override
+	public FindByFinalValueGreaterOutput findByFinalValueGreater(FindByFinalValueGreaterInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByFinalValueGreaterImpl impl = new br.com.senior.mydomain.myservice.impl.FindByFinalValueGreaterImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByFinalValueGreater(input, timeout);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByFinalValueGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	 */
+	@Override
+	public void findByFinalValueGreater(FindByFinalValueGreaterInput input) {
+		br.com.senior.mydomain.myservice.impl.FindByFinalValueGreaterImpl impl = new br.com.senior.mydomain.myservice.impl.FindByFinalValueGreaterImpl(messengerSupplier, userId, messageSupplier);
+		impl.findByFinalValueGreater(input);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByFinalValueGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	 */
+	@Override
+	public CompletableFuture<FindByFinalValueGreaterOutput> findByFinalValueGreaterRequest(FindByFinalValueGreaterInput input) {
+		return this.findByFinalValueGreaterRequest(input, 0l);
+	}
+	
+	/**
+	 * Chamada assíncrona para o método findByFinalValueGreater
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	*/
+	@Override
+	public CompletableFuture<FindByFinalValueGreaterOutput> findByFinalValueGreaterRequest(FindByFinalValueGreaterInput input, long timeout) {
+		br.com.senior.mydomain.myservice.impl.FindByFinalValueGreaterImpl impl = new br.com.senior.mydomain.myservice.impl.FindByFinalValueGreaterImpl(messengerSupplier, userId, messageSupplier);
+		return impl.findByFinalValueGreaterRequest(input, timeout, TimeUnit.MILLISECONDS);
 	}
 	/**
 	 * Chamada síncrona para o método getMetadata
@@ -2098,6 +2485,40 @@ public class MyServiceStubImpl  implements MyServiceStub {
 	
 	
 
+	/**
+	 * Chamada assíncrona para o método ativarCliente
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 */
+	@Override
+	public void ativarCliente( AtivarClienteInput input ) {
+	
+		MyServiceValidator.validate(input);
+	
+		Message message = null;
+		if (messageSupplier != null && messageSupplier.get() != null) {
+			message = messageSupplier.get().followUp( //
+				userId.getTenant(), //
+				MyServiceConstants.DOMAIN, //
+				MyServiceConstants.SERVICE, //
+				MyServiceConstants.Signals.ATIVAR_CLIENTE, 
+				DtoJsonConverter.toJSON(input));
+		}
+		else {
+			message = new Message(userId.getTenant(), // 
+				MyServiceConstants.DOMAIN, // 
+				MyServiceConstants.SERVICE, //
+				MyServiceConstants.Signals.ATIVAR_CLIENTE,
+				DtoJsonConverter.toJSON(input));
+		}
+			
+		try {
+			addMessageHeaders(message);
+			messengerSupplier.get().send(message);
+		} catch (Exception e) {
+			throw new MyServiceException("Erro ao enviar a mensagem", e);
+		}
+	}
+	
 	
 	private Message createMessage(ExportProductEventPayload input, String requestName) {
 		if (messageSupplier != null && messageSupplier.get() != null) {

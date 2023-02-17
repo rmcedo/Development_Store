@@ -59,7 +59,7 @@ public class FindPriceGreaterImpl {
 	/**
 	* Chamada síncrona para o método findPriceGreater
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	*  
+	* Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value 
 	* @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
 	*/
 	public FindPriceGreaterOutput findPriceGreater(FindPriceGreaterInput input, long timeout) {
@@ -93,7 +93,7 @@ public class FindPriceGreaterImpl {
 	/**
 	* Chamada assíncrona para o método findPriceGreater
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	* 
+	* Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	*/
 	public void findPriceGreater(FindPriceGreaterInput input) {
 		MyServiceValidator.validate(input);
@@ -110,7 +110,7 @@ public class FindPriceGreaterImpl {
 	/**
 	* Chamada assíncrona para o método findPriceGreater
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	* 
+	* Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	*/
 	@Deprecated
 	public CompletableFuture<FindPriceGreaterOutput> findPriceGreaterRequest(FindPriceGreaterInput input) {
@@ -128,7 +128,7 @@ public class FindPriceGreaterImpl {
 	/**
 	* Chamada assíncrona para o método findPriceGreater
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	* 
+	* Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	*/
 	public CompletableFuture<FindPriceGreaterOutput> findPriceGreaterRequest(FindPriceGreaterInput input, long timeout, TimeUnit unit) {
 		MyServiceValidator.validate(input);

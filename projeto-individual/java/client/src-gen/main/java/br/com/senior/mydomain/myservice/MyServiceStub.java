@@ -40,58 +40,301 @@ public interface MyServiceStub {
 	CompletableFuture<HelloWorldOutput> helloWorldRequest(HelloWorldInput input, long timeout);
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
 	 */
 	FindByNameOutput findByName(FindByNameInput input, long timeout);
 	
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	 * Chamada assíncrona
 	 */
 	void findByName(FindByNameInput input);
 	
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	 * Chamada assíncrona utilizando request
 	 */
 	CompletableFuture<FindByNameOutput> findByNameRequest(FindByNameInput input);
 	
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	 * Chamada assíncrona utilizando request
 	 */
 	CompletableFuture<FindByNameOutput> findByNameRequest(FindByNameInput input, long timeout);
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindByCpfOutput findByCpf(FindByCpfInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	 * Chamada assíncrona
+	 */
+	void findByCpf(FindByCpfInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByCpfOutput> findByCpfRequest(FindByCpfInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByCpfOutput> findByCpfRequest(FindByCpfInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindByBirthdayOutput findByBirthday(FindByBirthdayInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	 * Chamada assíncrona
+	 */
+	void findByBirthday(FindByBirthdayInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByBirthdayOutput> findByBirthdayRequest(FindByBirthdayInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByBirthdayOutput> findByBirthdayRequest(FindByBirthdayInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindByActiveTrueOutput findByActiveTrue(FindByActiveTrueInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	 * Chamada assíncrona
+	 */
+	void findByActiveTrue(FindByActiveTrueInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByActiveTrueOutput> findByActiveTrueRequest(FindByActiveTrueInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByActiveTrueOutput> findByActiveTrueRequest(FindByActiveTrueInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
 	 */
 	FindPriceGreaterOutput findPriceGreater(FindPriceGreaterInput input, long timeout);
 	
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	 * Chamada assíncrona
 	 */
 	void findPriceGreater(FindPriceGreaterInput input);
 	
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	 * Chamada assíncrona utilizando request
 	 */
 	CompletableFuture<FindPriceGreaterOutput> findPriceGreaterRequest(FindPriceGreaterInput input);
 	
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	 * 
+	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
 	 * Chamada assíncrona utilizando request
 	 */
 	CompletableFuture<FindPriceGreaterOutput> findPriceGreaterRequest(FindPriceGreaterInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindProductByNameOutput findProductByName(FindProductByNameInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	 * Chamada assíncrona
+	 */
+	void findProductByName(FindProductByNameInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductByNameOutput> findProductByNameRequest(FindProductByNameInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductByNameOutput> findProductByNameRequest(FindProductByNameInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindProductPriceLessOutput findProductPriceLess(FindProductPriceLessInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	 * Chamada assíncrona
+	 */
+	void findProductPriceLess(FindProductPriceLessInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductPriceLessOutput> findProductPriceLessRequest(FindProductPriceLessInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductPriceLessOutput> findProductPriceLessRequest(FindProductPriceLessInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindProductStockLessOutput findProductStockLess(FindProductStockLessInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	 * Chamada assíncrona
+	 */
+	void findProductStockLess(FindProductStockLessInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductStockLessOutput> findProductStockLessRequest(FindProductStockLessInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductStockLessOutput> findProductStockLessRequest(FindProductStockLessInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindProductStockGreaterOutput findProductStockGreater(FindProductStockGreaterInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	 * Chamada assíncrona
+	 */
+	void findProductStockGreater(FindProductStockGreaterInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductStockGreaterOutput> findProductStockGreaterRequest(FindProductStockGreaterInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindProductStockGreaterOutput> findProductStockGreaterRequest(FindProductStockGreaterInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindDateBetweenOutput findDateBetween(FindDateBetweenInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	 * Chamada assíncrona
+	 */
+	void findDateBetween(FindDateBetweenInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindDateBetweenOutput> findDateBetweenRequest(FindDateBetweenInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindDateBetweenOutput> findDateBetweenRequest(FindDateBetweenInput input, long timeout);
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	 * Chamada síncrona, o valor de timeout deve ser informado em ms 
+	 */
+	FindByFinalValueGreaterOutput findByFinalValueGreater(FindByFinalValueGreaterInput input, long timeout);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	 * Chamada assíncrona
+	 */
+	void findByFinalValueGreater(FindByFinalValueGreaterInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByFinalValueGreaterOutput> findByFinalValueGreaterRequest(FindByFinalValueGreaterInput input);
+	
+	/**
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 * 
+	 * Chamada assíncrona utilizando request
+	 */
+	CompletableFuture<FindByFinalValueGreaterOutput> findByFinalValueGreaterRequest(FindByFinalValueGreaterInput input, long timeout);
 	/**
 	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
 	 * Default 'getMetadata' query. Every service must handle this command and return metadata in the format requested.
@@ -1302,6 +1545,11 @@ public interface MyServiceStub {
 	
 	
 
+	/**
+	 * Chamada assíncrona para o método ativarCliente
+	 * Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
+	 */
+	void ativarCliente(AtivarClienteInput input);
 
 	/**
 	 * Chamada assíncrona para o método publishServiceStarted 

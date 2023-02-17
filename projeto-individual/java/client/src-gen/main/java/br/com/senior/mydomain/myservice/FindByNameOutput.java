@@ -10,6 +10,9 @@ import javax.validation.Valid;
 
 public class FindByNameOutput {
     
+    /**
+     * Lista de Clientes que obteremos como resposta
+     */
     @NotEmpty(message = "response is required, at least one value must be present")
     @Valid
     public java.util.List<Client> response;

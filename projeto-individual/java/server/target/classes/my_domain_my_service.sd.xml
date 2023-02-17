@@ -16,12 +16,85 @@
                 <slot name="response" type="client" optional="false" multivalued="true"/>
             </output>
         </query>
+        <query name="findByCpf" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="cpf" type="string" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="client" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findByBirthday" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="birthday" type="date" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="client" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findByActiveTrue" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="active" type="boolean" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="client" optional="false" multivalued="true"/>
+            </output>
+        </query>
         <query name="findPriceGreater" idempotent="false" extensionPoint="false" visibility="PRIVATE">
             <input>
                 <slot name="value" type="money" optional="false" multivalued="false"/>
             </input>
             <output>
                 <slot name="response" type="product" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findProductByName" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="name" type="string" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="product" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findProductPriceLess" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="price" type="money" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="product" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findProductStockLess" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="stock" type="integer" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="product" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findProductStockGreater" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="stock" type="integer" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="product" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findDateBetween" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="date1" type="date" optional="false" multivalued="false"/>
+                <slot name="date2" type="date" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="pedido" optional="false" multivalued="true"/>
+            </output>
+        </query>
+        <query name="findByFinalValueGreater" idempotent="false" extensionPoint="false" visibility="PRIVATE">
+            <input>
+                <slot name="finalValue" type="money" optional="false" multivalued="false"/>
+            </input>
+            <output>
+                <slot name="response" type="pedido" optional="false" multivalued="true"/>
             </output>
         </query>
         <query name="getMetadata" idempotent="false" extensionPoint="false" visibility="PRIVATE">
@@ -308,6 +381,11 @@
         </delete>
     </commands>
     <signals>
+        <inboundSignal name="ativarCliente" extensionPoint="false" visibility="PRIVATE">
+            <payload>
+                <slot name="id" type="string" optional="false" multivalued="false"/>
+            </payload>
+        </inboundSignal>
     </signals>
     <events>
         <event name="serviceStarted" extensionPoint="false" visibility="PRIVATE">

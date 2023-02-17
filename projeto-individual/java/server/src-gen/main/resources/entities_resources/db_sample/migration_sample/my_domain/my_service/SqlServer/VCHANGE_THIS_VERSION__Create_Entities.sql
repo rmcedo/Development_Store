@@ -1,4 +1,4 @@
-/* Database: SqlServer. Generation date: 2023-02-15 14:21:31:595 */
+/* Database: SqlServer. Generation date: 2023-02-17 15:48:55:517 */
 /* Entity Client */
 create table client (
 	id UNIQUEIDENTIFIER NOT NULL,
@@ -65,9 +65,9 @@ alter table pedido add constraint pk_pedido_id primary key(id);
 alter table item add constraint pk_item_id primary key(id);
 
 /* Foreign Key Constraints */
-alter table pedido add constraint fkox1y2vje26ik2qkq4etqzoiaiifl foreign key (client) references client (id);
-alter table item add constraint fksgoymnvymxbb5gzo9nse3wtygngk foreign key (pedido) references pedido (id);
-alter table item add constraint fk1hvt3ywi4krw6he0vywjxygkr33i foreign key (product) references product (id);
+alter table pedido add constraint fkl3iitoenj05fbyrs0ibbyzahlmt2 foreign key (client) references client (id);
+alter table item add constraint fk51vblu45haodmlw41v9mamvuop06 foreign key (pedido) references pedido (id);
+alter table item add constraint fk25xwshawujwyymyygjigrioq8inv foreign key (product) references product (id);
 
 /* Unique Key Constraints */
 alter table product add constraint uk_name unique (name);

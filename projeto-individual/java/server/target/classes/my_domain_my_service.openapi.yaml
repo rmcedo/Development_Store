@@ -14,6 +14,500 @@ servers:
   - url: platform.senior.com.br/t/senior.com.br/bridge/1.0/
 
 paths:
+  /rest/my_domain/my_service/queries/findProductPriceLess:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - price
+              properties:
+                price:
+                  type: string
+                  description: "Parametro de entrada que iremos passar no body de nossa requisição"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : price
+          description: "Parametro de entrada que iremos passar no body de nossa requisição"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findByCpf:
+    post:
+      description: "Query destinada para retornar Cliente com CPF igual ao passado como parametro"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cpf
+              properties:
+                cpf:
+                  type: string
+                  description: "Parametro que iremos passar no body de nossa requisição"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/client'
+                      minimum: 1
+                    description: "Cliente que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para retornar Cliente com CPF igual ao passado como parametro"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : cpf
+          description: "Parametro que iremos passar no body de nossa requisição"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/client'
+                      minimum: 1
+                    description: "Cliente que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findProductStockGreater:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - stock
+              properties:
+                stock:
+                  type: integer
+                  format: int64
+                  description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : stock
+          description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findProductStockLess:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - stock
+              properties:
+                stock:
+                  type: integer
+                  format: int64
+                  description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : stock
+          description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findByFinalValueGreater:
+    post:
+      description: ""
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - finalValue
+              properties:
+                finalValue:
+                  type: string
+                  description: ""
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/pedido'
+                      minimum: 1
+                    description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: ""
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : finalValue
+          description: ""
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/pedido'
+                      minimum: 1
+                    description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
   /rest/my_domain/my_service/queries/getMetadata:
     post:
       description: "Default 'getMetadata' query. Every service must handle this command and return metadata in the format requested."
@@ -90,6 +584,106 @@ paths:
                   metadata:
                     type: string
                     description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findByBirthday:
+    post:
+      description: "Query destinada para encontrar Clientes com nascimento no mesmo dia"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - birthday
+              properties:
+                birthday:
+                  type: string
+                  format: date
+                  description: "Parametro que iremos passar no body de nossa requisição (FORMATO: 'YYY-MM-DD')"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/client'
+                      minimum: 1
+                    description: "Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para encontrar Clientes com nascimento no mesmo dia"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : birthday
+          description: "Parametro que iremos passar no body de nossa requisição (FORMATO: 'YYY-MM-DD')"
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/client'
+                      minimum: 1
+                    description: "Clientes que obteremos como resposta"
         401:
           description: "Invalid Credentials"
         default:
@@ -289,7 +883,7 @@ paths:
   
   /rest/my_domain/my_service/queries/findPriceGreater:
     post:
-      description: ""
+      description: "Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value"
       tags:
         - Queries
       x-senior-visibility: PRIVATE
@@ -306,7 +900,7 @@ paths:
               properties:
                 value:
                   type: string
-                  description: ""
+                  description: "Parametro que iremos passar no body de nossa requisição"
       parameters:
         - in: header
           name: Accept
@@ -330,7 +924,7 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/product'
                       minimum: 1
-                    description: ""
+                    description: "Lista de Produtos que obteremos como resposta"
         401:
           description: "Invalid Credentials"
         default:
@@ -340,7 +934,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/genericError'
     get:
-      description: ""
+      description: "Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value"
       tags:
         - Queries
       x-senior-visibility: PRIVATE
@@ -349,7 +943,7 @@ paths:
       parameters:
         - in : query
           name : value
-          description: ""
+          description: "Parametro que iremos passar no body de nossa requisição"
           required: true
           schema:
             type: string
@@ -375,7 +969,119 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/product'
                       minimum: 1
-                    description: ""
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findDateBetween:
+    post:
+      description: "Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - date1
+                - date2
+              properties:
+                date1:
+                  type: string
+                  format: date
+                  description: "Parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+                date2:
+                  type: string
+                  format: date
+                  description: "Segundo parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/pedido'
+                      minimum: 1
+                    description: "Lista de Pedidos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : date1
+          description: "Parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+          required: true
+          schema:
+            type: string
+            format: date
+        - in : query
+          name : date2
+          description: "Segundo parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/pedido'
+                      minimum: 1
+                    description: "Lista de Pedidos que obteremos como resposta"
         401:
           description: "Invalid Credentials"
         default:
@@ -459,9 +1165,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/genericError'
   
-  /rest/my_domain/my_service/queries/findByName:
+  /rest/my_domain/my_service/queries/findByActiveTrue:
     post:
-      description: ""
+      description: "Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema"
       tags:
         - Queries
       x-senior-visibility: PRIVATE
@@ -474,11 +1180,11 @@ paths:
             schema:
               type: object
               required:
-                - name
+                - active
               properties:
-                name:
-                  type: string
-                  description: ""
+                active:
+                  type: boolean
+                  description: "Parametro que iremos passar no body de nossa requisição: true ou false)"
       parameters:
         - in: header
           name: Accept
@@ -502,7 +1208,7 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/client'
                       minimum: 1
-                    description: ""
+                    description: "Clientes que obteremos como resposta"
         401:
           description: "Invalid Credentials"
         default:
@@ -512,7 +1218,105 @@ paths:
               schema:
                 $ref: '#/components/schemas/genericError'
     get:
-      description: ""
+      description: "Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : active
+          description: "Parametro que iremos passar no body de nossa requisição: true ou false)"
+          required: true
+          schema:
+            type: boolean
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/client'
+                      minimum: 1
+                    description: "Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findProductByName:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: "Parametro de entrada que iremos passar no body de nossa requisição"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome"
       tags:
         - Queries
       x-senior-visibility: PRIVATE
@@ -521,7 +1325,105 @@ paths:
       parameters:
         - in : query
           name : name
-          description: ""
+          description: "Parametro de entrada que iremos passar no body de nossa requisição"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/product'
+                      minimum: 1
+                    description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  
+  /rest/my_domain/my_service/queries/findByName:
+    post:
+      description: "Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: "Parametro que iremos passar no body de nossa requisição"
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/client'
+                      minimum: 1
+                    description: "Lista de Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      security :
+        - bearerAuth: []
+      parameters:
+        - in : query
+          name : name
+          description: "Parametro que iremos passar no body de nossa requisição"
           required: true
           schema:
             type: string
@@ -547,7 +1449,7 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/client'
                       minimum: 1
-                    description: ""
+                    description: "Lista de Clientes que obteremos como resposta"
         401:
           description: "Invalid Credentials"
         default:
@@ -775,6 +1677,40 @@ paths:
           description: No response
         401:
           description: "Invalid Credentials"
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/genericError'
+  /my_service/signals/ativarCliente:
+    post:
+      description: ""
+      tags:
+      - Signals
+      security :
+        - bearerAuth: []
+      parameters:
+        - in: header
+          name: Accept
+          description: 'Content types and endpoint version for the request. Example: application/json;seniorx.version=2'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
+                  description: ""
+      responses:
+        202:
+          description: Accepted
         default:
           description: Error response
           content:
@@ -2033,7 +2969,7 @@ components:
         - SERVICE_ERROR
       
     client:
-      description: ""
+      description: "Entidade Cliente"
       type: object
       required:
         - name
@@ -2043,24 +2979,24 @@ components:
         id:
           type: string
           format: uuid
-          description: ""
+          description: "ID gerado automaticamente"
         name:
           type: string
-          description: ""
+          description: "Nome do Cliente"
         cpf:
           type: string
-          description: ""
+          description: "CPF do Cliente"
         birthday:
           type: string
           format: date
-          description: ""
+          description: "Data de nascimento do Cliente"
         active:
           type: boolean
-          description: ""
+          description: "ACTIVE: verifica se o cliente está ativo ou não, para que haja apenas exclusão lógica do Cliente"
           default: true
     
     product:
-      description: ""
+      description: "Entidade Produto"
       type: object
       required:
         - name
@@ -2071,27 +3007,27 @@ components:
         id:
           type: string
           format: uuid
-          description: ""
+          description: "ID do produto gerado automaticamente"
         name:
           type: string
-          description: ""
+          description: "Nome do Produto"
         description:
           type: string
-          description: ""
+          description: "Descrição/Características do Produto"
         price:
           type: string
-          description: ""
+          description: "Preço do Produto"
         stock:
           type: integer
           format: int64
-          description: ""
+          description: "Quantidade de Estoque do Produto"
         active:
           type: boolean
-          description: ""
+          description: "Mesma lógica de active de CLIENTE, LER ACIMA"
           default: true
     
     pedido:
-      description: ""
+      description: "Entidade Pedido"
       type: object
       required:
         - client
@@ -2100,26 +3036,26 @@ components:
         id:
           type: string
           format: uuid
-          description: ""
+          description: "ID do Pedido, gerado automaticamente"
         client:
           type: object
           allOf:
             - $ref: '#/components/schemas/client'
-          description: ""
+          description: "ID do Cliente que está realizando o Pedido"
         items:
           type: array
           items:
             type: object
             allOf:
               - $ref: '#/components/schemas/item'
-          description: ""
+          description: "Lista de Itens de Produtos que contém no Pedido"
         orderDate:
           type: string
           format: date
-          description: ""
+          description: "Data de realização do Pedido"
         finalValue:
           type: string
-          description: ""
+          description: "Valor Final do Pedido, somando os valor totais dos itens do Pedido"
     
     item:
       description: ""
@@ -2131,27 +3067,27 @@ components:
         id:
           type: string
           format: uuid
-          description: ""
+          description: "ID do Item, gerado automaticamente"
         pedido:
           type: object
           allOf:
             - $ref: '#/components/schemas/pedido'
-          description: ""
+          description: "ID do Pedido do qual este item pertence"
         product:
           type: object
           allOf:
             - $ref: '#/components/schemas/product'
-          description: ""
+          description: "ID do Produto do qual este item consiste"
         quantity:
           type: integer
           format: int64
-          description: ""
+          description: "Quantidade de produtos dentro do Item"
         unitaryValue:
           type: string
-          description: ""
+          description: "Valor unitário do Item, referente ao preço do Produto"
         totalValue:
           type: string
-          description: ""
+          description: "Valor Total referente a quantidade de itens multiplicando com seu valor unitário"
     
     notifyUserEventPayload:
       description: "Represents a regular user event notification payload"

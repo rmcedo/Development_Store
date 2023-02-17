@@ -1,4 +1,4 @@
-/* Database: PostgreSql. Generation date: 2023-02-15 14:21:31:579 */
+/* Database: PostgreSql. Generation date: 2023-02-17 15:48:55:500 */
 /* Entity Client */
 create table client (
 	id UUID NOT NULL,
@@ -65,9 +65,9 @@ alter table pedido add constraint pk_pedido_id primary key(id);
 alter table item add constraint pk_item_id primary key(id);
 
 /* Foreign Key Constraints */
-alter table pedido add constraint fkb8fixu77xwpwoyseuhfmurbttkem foreign key (client) references client (id);
-alter table item add constraint fkt4fg016y1pge8uqv2vdr4yd7vjk6 foreign key (pedido) references pedido (id);
-alter table item add constraint fkvm38iqvrehwlalcuz9fqm2wloty1 foreign key (product) references product (id);
+alter table pedido add constraint fk73pxtmen8gi6f9mo5inlrfygzifh foreign key (client) references client (id);
+alter table item add constraint fkdrlksdm3tcej27hie286scvce5tl foreign key (pedido) references pedido (id);
+alter table item add constraint fk12c6gt1mpxzhpdugpl3enf1migfb foreign key (product) references product (id);
 
 /* Unique Key Constraints */
 alter table product add constraint uk_name unique (name);

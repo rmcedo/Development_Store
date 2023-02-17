@@ -406,10 +406,62 @@
      </xsd:simpleType>
     
     <!-- Message payload elements for signals -->
+    <xsd:element name="ativarCliente">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
     
     <!-- Message input/output elements for commands -->
     <xsd:element name="updateMergePedido">
         <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="findProductPriceLess">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="price" type="xsd:decimal" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findProductPriceLessOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findByCpf">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="cpf" type="xsd:string" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findByCpfOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="client" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
     </xsd:element>
     <xsd:element name="updateProduct">
         <xsd:complexType/>
@@ -438,8 +490,74 @@
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
+    <xsd:element name="findProductStockGreater">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="stock" type="xsd:long" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findProductStockGreaterOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findProductStockLess">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="stock" type="xsd:long" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findProductStockLessOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
     <xsd:element name="updatePedido">
         <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="findByFinalValueGreater">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="finalValue" type="xsd:decimal" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findByFinalValueGreaterOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="pedido" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
     </xsd:element>
     <xsd:element name="deletePedido_Items" type="uuid"/>
     <xsd:element name="deleteProduct">
@@ -513,6 +631,28 @@
     </xsd:element>
     <xsd:element name="updateItem">
         <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="findByBirthday">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="birthday" type="xsd:date" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findByBirthdayOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="client" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
     </xsd:element>
     <xsd:element name="importPedido">
         <xsd:complexType>
@@ -731,6 +871,30 @@
     <xsd:element name="updateMergeClient">
         <xsd:complexType/>
     </xsd:element>
+    <xsd:element name="findDateBetween">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="date1" type="xsd:date" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+                <xsd:element name="date2" type="xsd:date" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findDateBetweenOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="pedido" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
     <xsd:element name="createPedido_Items">
         <xsd:complexType/>
     </xsd:element>
@@ -849,6 +1013,50 @@
                     <xsd:complexType>
                         <xsd:sequence>
                             <xsd:element name="item" type="dependency" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findByActiveTrue">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="active" type="xsd:boolean" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findByActiveTrueOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="client" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findProductByName">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"  readOnly="false">
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="findProductByNameOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- collection wrapper for response -->
+                <xsd:element name="response" minOccurs="1" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="item" type="product" minOccurs="1" maxOccurs="unbounded"/>
                         </xsd:sequence>
                     </xsd:complexType>
                 </xsd:element>

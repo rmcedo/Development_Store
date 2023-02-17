@@ -26,6 +26,7 @@ public interface MyServiceConstants {
     	 */
     	String HELLO_WORLD_ERROR = "helloWorldError";
     	/**
+    	 * Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
     	 * @see FindByNameInput the request payload
     	 */
     	String FIND_BY_NAME = "findByName";
@@ -43,6 +44,61 @@ public interface MyServiceConstants {
     	 */
     	String FIND_BY_NAME_ERROR = "findByNameError";
     	/**
+    	 * Query destinada para retornar Cliente com CPF igual ao passado como parametro
+    	 * @see FindByCpfInput the request payload
+    	 */
+    	String FIND_BY_CPF = "findByCpf";
+    	/**
+    	 * The success response primitive for findByCpf.
+    	 *
+    	 * @see #FIND_BY_CPF the request primitive
+    	 * @see FindByCpfOutput the response payload
+    	 */
+    	String FIND_BY_CPF_RESPONSE = "findByCpfResponse";
+    	/**
+    	 * An error response primitive for findByCpf.
+    	 *
+    	 * @see #FIND_BY_CPF the request primitive
+    	 */
+    	String FIND_BY_CPF_ERROR = "findByCpfError";
+    	/**
+    	 * Query destinada para encontrar Clientes com nascimento no mesmo dia
+    	 * @see FindByBirthdayInput the request payload
+    	 */
+    	String FIND_BY_BIRTHDAY = "findByBirthday";
+    	/**
+    	 * The success response primitive for findByBirthday.
+    	 *
+    	 * @see #FIND_BY_BIRTHDAY the request primitive
+    	 * @see FindByBirthdayOutput the response payload
+    	 */
+    	String FIND_BY_BIRTHDAY_RESPONSE = "findByBirthdayResponse";
+    	/**
+    	 * An error response primitive for findByBirthday.
+    	 *
+    	 * @see #FIND_BY_BIRTHDAY the request primitive
+    	 */
+    	String FIND_BY_BIRTHDAY_ERROR = "findByBirthdayError";
+    	/**
+    	 * Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema
+    	 * @see FindByActiveTrueInput the request payload
+    	 */
+    	String FIND_BY_ACTIVE_TRUE = "findByActiveTrue";
+    	/**
+    	 * The success response primitive for findByActiveTrue.
+    	 *
+    	 * @see #FIND_BY_ACTIVE_TRUE the request primitive
+    	 * @see FindByActiveTrueOutput the response payload
+    	 */
+    	String FIND_BY_ACTIVE_TRUE_RESPONSE = "findByActiveTrueResponse";
+    	/**
+    	 * An error response primitive for findByActiveTrue.
+    	 *
+    	 * @see #FIND_BY_ACTIVE_TRUE the request primitive
+    	 */
+    	String FIND_BY_ACTIVE_TRUE_ERROR = "findByActiveTrueError";
+    	/**
+    	 * Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value
     	 * @see FindPriceGreaterInput the request payload
     	 */
     	String FIND_PRICE_GREATER = "findPriceGreater";
@@ -59,6 +115,113 @@ public interface MyServiceConstants {
     	 * @see #FIND_PRICE_GREATER the request primitive
     	 */
     	String FIND_PRICE_GREATER_ERROR = "findPriceGreaterError";
+    	/**
+    	 * Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome
+    	 * @see FindProductByNameInput the request payload
+    	 */
+    	String FIND_PRODUCT_BY_NAME = "findProductByName";
+    	/**
+    	 * The success response primitive for findProductByName.
+    	 *
+    	 * @see #FIND_PRODUCT_BY_NAME the request primitive
+    	 * @see FindProductByNameOutput the response payload
+    	 */
+    	String FIND_PRODUCT_BY_NAME_RESPONSE = "findProductByNameResponse";
+    	/**
+    	 * An error response primitive for findProductByName.
+    	 *
+    	 * @see #FIND_PRODUCT_BY_NAME the request primitive
+    	 */
+    	String FIND_PRODUCT_BY_NAME_ERROR = "findProductByNameError";
+    	/**
+    	 * Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price
+    	 * @see FindProductPriceLessInput the request payload
+    	 */
+    	String FIND_PRODUCT_PRICE_LESS = "findProductPriceLess";
+    	/**
+    	 * The success response primitive for findProductPriceLess.
+    	 *
+    	 * @see #FIND_PRODUCT_PRICE_LESS the request primitive
+    	 * @see FindProductPriceLessOutput the response payload
+    	 */
+    	String FIND_PRODUCT_PRICE_LESS_RESPONSE = "findProductPriceLessResponse";
+    	/**
+    	 * An error response primitive for findProductPriceLess.
+    	 *
+    	 * @see #FIND_PRODUCT_PRICE_LESS the request primitive
+    	 */
+    	String FIND_PRODUCT_PRICE_LESS_ERROR = "findProductPriceLessError";
+    	/**
+    	 * Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock
+    	 * @see FindProductStockLessInput the request payload
+    	 */
+    	String FIND_PRODUCT_STOCK_LESS = "findProductStockLess";
+    	/**
+    	 * The success response primitive for findProductStockLess.
+    	 *
+    	 * @see #FIND_PRODUCT_STOCK_LESS the request primitive
+    	 * @see FindProductStockLessOutput the response payload
+    	 */
+    	String FIND_PRODUCT_STOCK_LESS_RESPONSE = "findProductStockLessResponse";
+    	/**
+    	 * An error response primitive for findProductStockLess.
+    	 *
+    	 * @see #FIND_PRODUCT_STOCK_LESS the request primitive
+    	 */
+    	String FIND_PRODUCT_STOCK_LESS_ERROR = "findProductStockLessError";
+    	/**
+    	 * Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock
+    	 * @see FindProductStockGreaterInput the request payload
+    	 */
+    	String FIND_PRODUCT_STOCK_GREATER = "findProductStockGreater";
+    	/**
+    	 * The success response primitive for findProductStockGreater.
+    	 *
+    	 * @see #FIND_PRODUCT_STOCK_GREATER the request primitive
+    	 * @see FindProductStockGreaterOutput the response payload
+    	 */
+    	String FIND_PRODUCT_STOCK_GREATER_RESPONSE = "findProductStockGreaterResponse";
+    	/**
+    	 * An error response primitive for findProductStockGreater.
+    	 *
+    	 * @see #FIND_PRODUCT_STOCK_GREATER the request primitive
+    	 */
+    	String FIND_PRODUCT_STOCK_GREATER_ERROR = "findProductStockGreaterError";
+    	/**
+    	 * Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2
+    	 * @see FindDateBetweenInput the request payload
+    	 */
+    	String FIND_DATE_BETWEEN = "findDateBetween";
+    	/**
+    	 * The success response primitive for findDateBetween.
+    	 *
+    	 * @see #FIND_DATE_BETWEEN the request primitive
+    	 * @see FindDateBetweenOutput the response payload
+    	 */
+    	String FIND_DATE_BETWEEN_RESPONSE = "findDateBetweenResponse";
+    	/**
+    	 * An error response primitive for findDateBetween.
+    	 *
+    	 * @see #FIND_DATE_BETWEEN the request primitive
+    	 */
+    	String FIND_DATE_BETWEEN_ERROR = "findDateBetweenError";
+    	/**
+    	 * @see FindByFinalValueGreaterInput the request payload
+    	 */
+    	String FIND_BY_FINAL_VALUE_GREATER = "findByFinalValueGreater";
+    	/**
+    	 * The success response primitive for findByFinalValueGreater.
+    	 *
+    	 * @see #FIND_BY_FINAL_VALUE_GREATER the request primitive
+    	 * @see FindByFinalValueGreaterOutput the response payload
+    	 */
+    	String FIND_BY_FINAL_VALUE_GREATER_RESPONSE = "findByFinalValueGreaterResponse";
+    	/**
+    	 * An error response primitive for findByFinalValueGreater.
+    	 *
+    	 * @see #FIND_BY_FINAL_VALUE_GREATER the request primitive
+    	 */
+    	String FIND_BY_FINAL_VALUE_GREATER_ERROR = "findByFinalValueGreaterError";
     	/**
     	 * Default 'getMetadata' query. Every service must handle this command and return metadata in the format requested.
     	 * @see GetMetadataInput the request payload
@@ -881,6 +1044,10 @@ public interface MyServiceConstants {
     	 * @see #DELETE_ITEM the request primitive
     	 */
     	String DELETE_ITEM_ERROR = "deleteItemError";
+    }
+    
+    interface Signals {
+    	String ATIVAR_CLIENTE = "ativarCliente";
     }
     
     interface Events {

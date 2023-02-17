@@ -27,6 +27,30 @@ consumes:
   - application/json
 
 paths:
+  /signals/ativarCliente:
+    post:
+      description: ""
+      tags:
+      - Signals
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: string
+                description: ""
+      responses:
+        202:
+          description: Accepted
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
   
 definitions:
   userNotificationKind:
@@ -132,7 +156,7 @@ definitions:
       - SERVICE_ERROR
     
   client:
-    description: ""
+    description: "Entidade Cliente"
     type: object
     required:
       - name
@@ -142,24 +166,24 @@ definitions:
       id:
         type: string
         format: uuid
-        description: ""
+        description: "ID gerado automaticamente"
       name:
         type: string
-        description: ""
+        description: "Nome do Cliente"
       cpf:
         type: string
-        description: ""
+        description: "CPF do Cliente"
       birthday:
         type: string
         format: date
-        description: ""
+        description: "Data de nascimento do Cliente"
       active:
         type: boolean
-        description: ""
+        description: "ACTIVE: verifica se o cliente está ativo ou não, para que haja apenas exclusão lógica do Cliente"
         default: true
   
   product:
-    description: ""
+    description: "Entidade Produto"
     type: object
     required:
       - name
@@ -170,27 +194,27 @@ definitions:
       id:
         type: string
         format: uuid
-        description: ""
+        description: "ID do produto gerado automaticamente"
       name:
         type: string
-        description: ""
+        description: "Nome do Produto"
       description:
         type: string
-        description: ""
+        description: "Descrição/Características do Produto"
       price:
         type: string
-        description: ""
+        description: "Preço do Produto"
       stock:
         type: integer
         format: int64
-        description: ""
+        description: "Quantidade de Estoque do Produto"
       active:
         type: boolean
-        description: ""
+        description: "Mesma lógica de active de CLIENTE, LER ACIMA"
         default: true
   
   pedido:
-    description: ""
+    description: "Entidade Pedido"
     type: object
     required:
       - client
@@ -199,26 +223,26 @@ definitions:
       id:
         type: string
         format: uuid
-        description: ""
+        description: "ID do Pedido, gerado automaticamente"
       client:
         type: object
         allOf:
          - $ref: '#/definitions/client'
-        description: ""
+        description: "ID do Cliente que está realizando o Pedido"
       items:
         type: array
         items:
           type: object
           allOf:
            - $ref: '#/definitions/item'
-        description: ""
+        description: "Lista de Itens de Produtos que contém no Pedido"
       orderDate:
         type: string
         format: date
-        description: ""
+        description: "Data de realização do Pedido"
       finalValue:
         type: string
-        description: ""
+        description: "Valor Final do Pedido, somando os valor totais dos itens do Pedido"
   
   item:
     description: ""
@@ -230,27 +254,27 @@ definitions:
       id:
         type: string
         format: uuid
-        description: ""
+        description: "ID do Item, gerado automaticamente"
       pedido:
         type: object
         allOf:
          - $ref: '#/definitions/pedido'
-        description: ""
+        description: "ID do Pedido do qual este item pertence"
       product:
         type: object
         allOf:
          - $ref: '#/definitions/product'
-        description: ""
+        description: "ID do Produto do qual este item consiste"
       quantity:
         type: integer
         format: int64
-        description: ""
+        description: "Quantidade de produtos dentro do Item"
       unitaryValue:
         type: string
-        description: ""
+        description: "Valor unitário do Item, referente ao preço do Produto"
       totalValue:
         type: string
-        description: ""
+        description: "Valor Total referente a quantidade de itens multiplicando com seu valor unitário"
   
   notifyUserEventPayload:
     description: "Represents a regular user event notification payload"

@@ -10,6 +10,9 @@ import br.com.senior.messaging.model.EntityDescription;
 import br.com.senior.messaging.model.EntityId;
 import br.com.senior.custom.CustomDTO;
 
+/**
+ * Entidade Pedido
+ */
 @EntityDescription
 public class Pedido extends CustomDTO {
     
@@ -109,18 +112,33 @@ public class Pedido extends CustomDTO {
     }
 
     @EntityId
+    /**
+     * ID do Pedido, gerado automaticamente
+     */
     public String id;
     
+    /**
+     * ID do Cliente que está realizando o Pedido
+     */
     @NotNull(message = "client is required")
     @ValidEntity(message = "client.id is required")
     public Client client;
     
+    /**
+     * Lista de Itens de Produtos que contém no Pedido
+     */
     @Valid
     public java.util.List<Item> items;
     
+    /**
+     * Data de realização do Pedido
+     */
     @NotNull(message = "orderDate is required")
     public java.time.LocalDate orderDate;
     
+    /**
+     * Valor Final do Pedido, somando os valor totais dos itens do Pedido
+     */
     public java.math.BigDecimal finalValue;
     
     

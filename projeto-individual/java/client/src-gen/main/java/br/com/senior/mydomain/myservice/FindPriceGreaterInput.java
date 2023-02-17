@@ -9,6 +9,9 @@ import javax.validation.constraints.NotNull;
 
 public class FindPriceGreaterInput {
     
+    /**
+     * Parametro que iremos passar no body de nossa requisição
+     */
     @NotNull(message = "value is required")
     public java.math.BigDecimal value;
     

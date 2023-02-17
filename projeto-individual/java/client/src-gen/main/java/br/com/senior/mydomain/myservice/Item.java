@@ -108,20 +108,38 @@ public class Item extends CustomDTO {
     }
 
     @EntityId
+    /**
+     * ID do Item, gerado automaticamente
+     */
     public String id;
     
+    /**
+     * ID do Pedido do qual este item pertence
+     */
     @ValidEntity(message = "pedido.id is required")
     public Pedido pedido;
     
+    /**
+     * ID do Produto do qual este item consiste
+     */
     @NotNull(message = "product is required")
     @ValidEntity(message = "product.id is required")
     public Product product;
     
+    /**
+     * Quantidade de produtos dentro do Item
+     */
     @NotNull(message = "quantity is required")
     public Long quantity;
     
+    /**
+     * Valor unitário do Item, referente ao preço do Produto
+     */
     public java.math.BigDecimal unitaryValue;
     
+    /**
+     * Valor Total referente a quantidade de itens multiplicando com seu valor unitário
+     */
     public java.math.BigDecimal totalValue;
     
     

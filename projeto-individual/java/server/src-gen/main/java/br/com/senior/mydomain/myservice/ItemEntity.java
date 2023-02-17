@@ -29,26 +29,44 @@ public class ItemEntity extends CustomEntity implements Persistable<java.util.UU
 	
 	public static final String SECURITY_RESOURCE = "res://senior.com.br/my_domain/my_service/entities/item";
 
+	/**
+	 * ID do Item, gerado automaticamente
+	 */
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name = "id", updatable = false)
 	private java.util.UUID id;
 	
+	/**
+	 * ID do Pedido do qual este item pertence
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pedido")
 	private PedidoEntity pedido;
 	
+	/**
+	 * ID do Produto do qual este item consiste
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product")
 	private ProductEntity product;
 	
+	/**
+	 * Quantidade de produtos dentro do Item
+	 */
 	@Column(name = "quantity")
 	private Long quantity;
 	
+	/**
+	 * Valor unitário do Item, referente ao preço do Produto
+	 */
 	@Column(name = "unitary_value")
 	private java.math.BigDecimal unitaryValue;
 	
+	/**
+	 * Valor Total referente a quantidade de itens multiplicando com seu valor unitário
+	 */
 	@Column(name = "total_value")
 	private java.math.BigDecimal totalValue;
 	

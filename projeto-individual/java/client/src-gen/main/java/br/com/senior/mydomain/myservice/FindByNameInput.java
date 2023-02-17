@@ -9,6 +9,9 @@ import javax.validation.constraints.NotNull;
 
 public class FindByNameInput {
     
+    /**
+     * Parametro que iremos passar no body de nossa requisição
+     */
     @NotNull(message = "name is required")
     public String name;
     

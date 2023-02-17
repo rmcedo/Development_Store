@@ -59,7 +59,7 @@ public class FindByNameImpl {
 	/**
 	* Chamada síncrona para o método findByName
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	*  
+	* Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição 
 	* @throws MyServiceMessageException quando um erro com payload for retornado pela mensageria
 	*/
 	public FindByNameOutput findByName(FindByNameInput input, long timeout) {
@@ -93,7 +93,7 @@ public class FindByNameImpl {
 	/**
 	* Chamada assíncrona para o método findByName
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	* 
+	* Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	*/
 	public void findByName(FindByNameInput input) {
 		MyServiceValidator.validate(input);
@@ -110,7 +110,7 @@ public class FindByNameImpl {
 	/**
 	* Chamada assíncrona para o método findByName
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	* 
+	* Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	*/
 	@Deprecated
 	public CompletableFuture<FindByNameOutput> findByNameRequest(FindByNameInput input) {
@@ -128,7 +128,7 @@ public class FindByNameImpl {
 	/**
 	* Chamada assíncrona para o método findByName
 	* Warning: this operation is PRIVATE and may have its behavior changed at any time without notice
-	* 
+	* Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição
 	*/
 	public CompletableFuture<FindByNameOutput> findByNameRequest(FindByNameInput input, long timeout, TimeUnit unit) {
 		MyServiceValidator.validate(input);

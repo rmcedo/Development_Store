@@ -19,6 +19,66 @@
             "visibility" : "PRIVATE",
             "version": "0"
         },
+        "findProductPriceLess": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Lista de Produtos com pre\u00E7o menor que o valor passado no parametro price",
+            "idempotent": true,
+            "input" : {
+                "price" : {
+                    "type": "money",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro de entrada que iremos passar no body de nossa requisi\u00E7\u00E3o",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "product",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Lista de Produtos que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
+        "findByCpf": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Cliente com CPF igual ao passado como parametro",
+            "idempotent": true,
+            "input" : {
+                "cpf" : {
+                    "type": "string",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro que iremos passar no body de nossa requisi\u00E7\u00E3o",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "client",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Cliente que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
         "updateProduct": {
             "endpointType" : "command",
             "kind": "update",
@@ -79,6 +139,66 @@
             "visibility" : "PRIVATE",
             "version": "0"
         },
+        "findProductStockGreater": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock",
+            "idempotent": true,
+            "input" : {
+                "stock" : {
+                    "type": "integer",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro de entrada qque iremos passar no body de nossa requisi\u00E7\u00E3o",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "product",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Lista de Produtos que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
+        "findProductStockLess": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock",
+            "idempotent": true,
+            "input" : {
+                "stock" : {
+                    "type": "integer",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro de entrada qque iremos passar no body de nossa requisi\u00E7\u00E3o",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "product",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Lista de Produtos que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
         "updatePedido": {
             "endpointType" : "command",
             "kind": "update",
@@ -86,6 +206,33 @@
             "documentation": "The 'update' request primitive for the Pedido entity.",
             "input" : "pedido",
             "output" : "pedido",
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
+        "findByFinalValueGreater": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "idempotent": true,
+            "input" : {
+                "finalValue" : {
+                    "type": "money",
+                    "optional": false,
+                    "multivalued": false,
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "pedido",
+                    "optional": false,
+                    "multivalued": true,
+                    "readOnly": false
+                }
+            },
             "extensionPoint" : false,
             "responses" : {
             },
@@ -260,6 +407,36 @@
             "documentation": "The 'update' request primitive for the Item entity.",
             "input" : "item",
             "output" : "item",
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
+        "findByBirthday": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para encontrar Clientes com nascimento no mesmo dia",
+            "idempotent": true,
+            "input" : {
+                "birthday" : {
+                    "type": "date",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro que iremos passar no body de nossa requisi\u00E7\u00E3o (FORMATO: 'YYY-MM-DD')",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "client",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Clientes que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
             "extensionPoint" : false,
             "responses" : {
             },
@@ -515,12 +692,14 @@
             "endpointType" : "command",
             "kind": "query",
             "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Lista de Produtos com pre\u00E7o com maior valor do que o passado no parametro value",
             "idempotent": true,
             "input" : {
                 "value" : {
                     "type": "money",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Parametro que iremos passar no body de nossa requisi\u00E7\u00E3o",
                     "readOnly": false
                 }
             },
@@ -529,6 +708,7 @@
                     "type": "product",
                     "optional": false,
                     "multivalued": true,
+                    "documentation": "Lista de Produtos que obteremos como resposta",
                     "readOnly": false
                 }
             },
@@ -641,6 +821,43 @@
             "documentation": "The 'updateMerge' request primitive for the Client entity.",
             "input" : "client",
             "output" : "client",
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
+        "findDateBetween": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Lista de Pedidos com data de cria\u00E7\u00E3o entre as duas datas passadas nos parametros date1 e date2",
+            "idempotent": true,
+            "input" : {
+                "date1" : {
+                    "type": "date",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro de entrada que iremos passar no body de nossa requisi\u00E7\u00E3o FORMATO: 'YYYY-MM-DD'",
+                    "readOnly": false
+                },
+                "date2" : {
+                    "type": "date",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Segundo parametro de entrada que iremos passar no body de nossa requisi\u00E7\u00E3o FORMATO: 'YYYY-MM-DD'",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "pedido",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Lista de Pedidos que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
             "extensionPoint" : false,
             "responses" : {
             },
@@ -865,16 +1082,18 @@
             "visibility" : "PRIVATE",
             "version": "0"
         },
-        "findByName": {
+        "findByActiveTrue": {
             "endpointType" : "command",
             "kind": "query",
             "priority" : "NORMAL",
+            "documentation": "Query destinada para encontrar Clientes que est\u00E3o ativos ou n\u00E3o dentro do sistema",
             "idempotent": true,
             "input" : {
-                "name" : {
-                    "type": "string",
+                "active" : {
+                    "type": "boolean",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Parametro que iremos passar no body de nossa requisi\u00E7\u00E3o: true ou false)",
                     "readOnly": false
                 }
             },
@@ -883,6 +1102,67 @@
                     "type": "client",
                     "optional": false,
                     "multivalued": true,
+                    "documentation": "Clientes que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
+        "findProductByName": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome",
+            "idempotent": true,
+            "input" : {
+                "name" : {
+                    "type": "string",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro de entrada que iremos passar no body de nossa requisi\u00E7\u00E3o",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "product",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Lista de Produtos que obteremos como resposta",
+                    "readOnly": false
+                }
+            },
+            "extensionPoint" : false,
+            "responses" : {
+            },
+            "visibility" : "PRIVATE",
+            "version": "0"
+        },
+        "findByName": {
+            "endpointType" : "command",
+            "kind": "query",
+            "priority" : "NORMAL",
+            "documentation": "Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisi\u00E7\u00E3o",
+            "idempotent": true,
+            "input" : {
+                "name" : {
+                    "type": "string",
+                    "optional": false,
+                    "multivalued": false,
+                    "documentation": "Parametro que iremos passar no body de nossa requisi\u00E7\u00E3o",
+                    "readOnly": false
+                }
+            },
+            "output" : {
+                "response" : {
+                    "type": "client",
+                    "optional": false,
+                    "multivalued": true,
+                    "documentation": "Lista de Clientes que obteremos como resposta",
                     "readOnly": false
                 }
             },
@@ -1125,6 +1405,21 @@
         }
     },
     "signals" : {
+        "ativarCliente": {
+            "endpointType" : "signal",
+            "payload" : {
+                "id" : {
+                    "type": "string",
+                    "optional": false,
+                    "multivalued": false,
+                    "readOnly": false
+                }
+            },
+            "kind" : "Inbound",
+            "priority" : "LOW",
+            "extensionPoint" : false,
+            "visibility" : "PRIVATE"
+        }
     },
     "events" : {
         "serviceStarted": {
@@ -1292,24 +1587,28 @@
                 "type": "string",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Nome do Cliente",
                 "readOnly": false
             },
             "cpf" : {
                 "type": "string",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "CPF do Cliente",
                 "readOnly": false
             },
             "birthday" : {
                 "type": "date",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Data de nascimento do Cliente",
                 "readOnly": false
             },
             "active" : {
                 "type": "boolean",
                 "optional": true,
                 "multivalued": false,
+                "documentation": "ACTIVE: verifica se o cliente est\u00E1 ativo ou n\u00E3o, para que haja apenas exclus\u00E3o l\u00F3gica do Cliente",
                 "readOnly": false
             ,
             	"default": true
@@ -1327,30 +1626,35 @@
                 "type": "string",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Nome do Produto",
                 "readOnly": false
             },
             "description" : {
                 "type": "string",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Descri\u00E7\u00E3o/Caracter\u00EDsticas do Produto",
                 "readOnly": false
             },
             "price" : {
                 "type": "money",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Pre\u00E7o do Produto",
                 "readOnly": false
             },
             "stock" : {
                 "type": "integer",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Quantidade de Estoque do Produto",
                 "readOnly": false
             },
             "active" : {
                 "type": "boolean",
                 "optional": true,
                 "multivalued": false,
+                "documentation": "Mesma l\u00F3gica de active de CLIENTE, LER ACIMA",
                 "readOnly": false
             ,
             	"default": true
@@ -1368,24 +1672,28 @@
                 "type": "client",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "ID do Cliente que est\u00E1 realizando o Pedido",
                 "readOnly": false
             },
             "items" : {
                 "type": "item",
                 "optional": true,
                 "multivalued": true,
+                "documentation": "Lista de Itens de Produtos que cont\u00E9m no Pedido",
                 "readOnly": false
             },
             "orderDate" : {
                 "type": "date",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Data de realiza\u00E7\u00E3o do Pedido",
                 "readOnly": false
             },
             "finalValue" : {
                 "type": "money",
                 "optional": true,
                 "multivalued": false,
+                "documentation": "Valor Final do Pedido, somando os valor totais dos itens do Pedido",
                 "readOnly": false
             }
         },
@@ -1401,30 +1709,35 @@
                 "type": "pedido",
                 "optional": true,
                 "multivalued": false,
+                "documentation": "ID do Pedido do qual este item pertence",
                 "readOnly": false
             },
             "product" : {
                 "type": "product",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "ID do Produto do qual este item consiste",
                 "readOnly": false
             },
             "quantity" : {
                 "type": "integer",
                 "optional": false,
                 "multivalued": false,
+                "documentation": "Quantidade de produtos dentro do Item ",
                 "readOnly": false
             },
             "unitaryValue" : {
                 "type": "money",
                 "optional": true,
                 "multivalued": false,
+                "documentation": "Valor unit\u00E1rio do Item, referente ao pre\u00E7o do Produto",
                 "readOnly": false
             },
             "totalValue" : {
                 "type": "money",
                 "optional": true,
                 "multivalued": false,
+                "documentation": "Valor Total referente a quantidade de itens multiplicando com seu valor unit\u00E1rio",
                 "readOnly": false
             }
         },
@@ -2134,6 +2447,7 @@
     "entities" : {
         "client" : {
             "id": "id",
+            "documentation": "Entidade Cliente",
             "customizable": true,
             "slots": { 
                 "id" : {
@@ -2147,24 +2461,28 @@
                     "type": "string",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Nome do Cliente",
                     "readOnly": false
                 },
                 "cpf" : {
                     "type": "string",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "CPF do Cliente",
                     "readOnly": false
                 },
                 "birthday" : {
                     "type": "date",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Data de nascimento do Cliente",
                     "readOnly": false
                 },
                 "active" : {
                     "type": "boolean",
                     "optional": true,
                     "multivalued": false,
+                    "documentation": "ACTIVE: verifica se o cliente est\u00E1 ativo ou n\u00E3o, para que haja apenas exclus\u00E3o l\u00F3gica do Cliente",
                     "readOnly": false
                 ,
                 	"default": true
@@ -2173,6 +2491,7 @@
         },
         "product" : {
             "id": "id",
+            "documentation": "Entidade Produto",
             "customizable": true,
             "slots": { 
                 "id" : {
@@ -2186,30 +2505,35 @@
                     "type": "string",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Nome do Produto",
                     "readOnly": false
                 },
                 "description" : {
                     "type": "string",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Descri\u00E7\u00E3o/Caracter\u00EDsticas do Produto",
                     "readOnly": false
                 },
                 "price" : {
                     "type": "money",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Pre\u00E7o do Produto",
                     "readOnly": false
                 },
                 "stock" : {
                     "type": "integer",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Quantidade de Estoque do Produto",
                     "readOnly": false
                 },
                 "active" : {
                     "type": "boolean",
                     "optional": true,
                     "multivalued": false,
+                    "documentation": "Mesma l\u00F3gica de active de CLIENTE, LER ACIMA",
                     "readOnly": false
                 ,
                 	"default": true
@@ -2218,6 +2542,7 @@
         },
         "pedido" : {
             "id": "id",
+            "documentation": "Entidade Pedido",
             "customizable": true,
             "slots": { 
                 "id" : {
@@ -2231,24 +2556,28 @@
                     "type": "client",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "ID do Cliente que est\u00E1 realizando o Pedido",
                     "readOnly": false
                 },
                 "items" : {
                     "type": "item",
                     "optional": true,
                     "multivalued": true,
+                    "documentation": "Lista de Itens de Produtos que cont\u00E9m no Pedido",
                     "readOnly": false
                 },
                 "orderDate" : {
                     "type": "date",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Data de realiza\u00E7\u00E3o do Pedido",
                     "readOnly": false
                 },
                 "finalValue" : {
                     "type": "money",
                     "optional": true,
                     "multivalued": false,
+                    "documentation": "Valor Final do Pedido, somando os valor totais dos itens do Pedido",
                     "readOnly": false
                 }
             }    
@@ -2268,30 +2597,35 @@
                     "type": "pedido",
                     "optional": true,
                     "multivalued": false,
+                    "documentation": "ID do Pedido do qual este item pertence",
                     "readOnly": false
                 },
                 "product" : {
                     "type": "product",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "ID do Produto do qual este item consiste",
                     "readOnly": false
                 },
                 "quantity" : {
                     "type": "integer",
                     "optional": false,
                     "multivalued": false,
+                    "documentation": "Quantidade de produtos dentro do Item ",
                     "readOnly": false
                 },
                 "unitaryValue" : {
                     "type": "money",
                     "optional": true,
                     "multivalued": false,
+                    "documentation": "Valor unit\u00E1rio do Item, referente ao pre\u00E7o do Produto",
                     "readOnly": false
                 },
                 "totalValue" : {
                     "type": "money",
                     "optional": true,
                     "multivalued": false,
+                    "documentation": "Valor Total referente a quantidade de itens multiplicando com seu valor unit\u00E1rio",
                     "readOnly": false
                 }
             }    

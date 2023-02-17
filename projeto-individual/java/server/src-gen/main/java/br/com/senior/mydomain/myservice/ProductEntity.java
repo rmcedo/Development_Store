@@ -27,24 +27,42 @@ public class ProductEntity extends CustomEntity implements Persistable<java.util
 	
 	public static final String SECURITY_RESOURCE = "res://senior.com.br/my_domain/my_service/entities/product";
 
+	/**
+	 * ID do produto gerado automaticamente
+	 */
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name = "id", updatable = false)
 	private java.util.UUID id;
 	
+	/**
+	 * Nome do Produto
+	 */
 	@Column(name = "name")
 	private String name;
 	
+	/**
+	 * Descrição/Características do Produto
+	 */
 	@Column(name = "description")
 	private String description;
 	
+	/**
+	 * Preço do Produto
+	 */
 	@Column(name = "price")
 	private java.math.BigDecimal price;
 	
+	/**
+	 * Quantidade de Estoque do Produto
+	 */
 	@Column(name = "stock")
 	private Long stock;
 	
+	/**
+	 * Mesma lógica de active de CLIENTE, LER ACIMA
+	 */
 	@Column(name = "active")
 	private Boolean active;
 	
