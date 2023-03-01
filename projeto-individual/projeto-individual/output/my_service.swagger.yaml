@@ -1,0 +1,3399 @@
+swagger: '2.0'
+
+info:
+  version: 0.0.1
+  title: my_service
+  x-senior-domain: my_domain
+  x-senior-domain-path: my_domain
+  x-senior-service-path: my_service
+  contact:
+    name: Senior X Platform
+    url: https://dev.senior.com.br
+    email: seniorx-dev@senior.com.br
+
+host: platform.senior.com.br
+
+basePath: /t/senior.com.br/bridge/1.0/rest/my_domain
+
+securityDefinitions:
+   APIKeyHeader:
+     type: apiKey
+     in: header
+     name: Authorization
+
+security:
+  - APIKeyHeader: []
+
+produces:
+  - application/json
+consumes:
+  - application/json
+
+paths:
+  /my_service/queries/helloWorld:
+    post:
+      description: ""
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - who
+            properties:
+              who:
+                type: string
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - helloWorldMessage
+            properties:
+              helloWorldMessage:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: ""
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: who
+          description: ""
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - helloWorldMessage
+            properties:
+              helloWorldMessage:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findByName:
+    post:
+      description: "Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - name
+            properties:
+              name:
+                type: string
+                description: "Parametro que iremos passar no body de nossa requisição"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Lista de Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: name
+          description: "Parametro que iremos passar no body de nossa requisição"
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Lista de Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findByCpf:
+    post:
+      description: "Query destinada para retornar Cliente com CPF igual ao passado como parametro"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - cpf
+            properties:
+              cpf:
+                type: string
+                description: "Parametro que iremos passar no body de nossa requisição"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Cliente que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Cliente com CPF igual ao passado como parametro"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: cpf
+          description: "Parametro que iremos passar no body de nossa requisição"
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Cliente que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findByBirthday:
+    post:
+      description: "Query destinada para encontrar Clientes com nascimento no mesmo dia"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - birthday
+            properties:
+              birthday:
+                type: string
+                format: date
+                description: "Parametro que iremos passar no body de nossa requisição (FORMATO: 'YYY-MM-DD')"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para encontrar Clientes com nascimento no mesmo dia"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: birthday
+          description: "Parametro que iremos passar no body de nossa requisição (FORMATO: 'YYY-MM-DD')"
+          in: query
+          required: true
+          type: string
+          format: date
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findByActiveTrue:
+    post:
+      description: "Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - active
+            properties:
+              active:
+                type: boolean
+                description: "Parametro que iremos passar no body de nossa requisição: true ou false)"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: active
+          description: "Parametro que iremos passar no body de nossa requisição: true ou false)"
+          in: query
+          required: true
+          type: boolean
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/client'
+                  minimum: 1
+                description: "Clientes que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findPriceGreater:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - value
+            properties:
+              value:
+                type: string
+                description: "Parametro que iremos passar no body de nossa requisição"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: value
+          description: "Parametro que iremos passar no body de nossa requisição"
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findProductByName:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - name
+            properties:
+              name:
+                type: string
+                description: "Parametro de entrada que iremos passar no body de nossa requisição"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: name
+          description: "Parametro de entrada que iremos passar no body de nossa requisição"
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findProductPriceLess:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - price
+            properties:
+              price:
+                type: string
+                description: "Parametro de entrada que iremos passar no body de nossa requisição"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: price
+          description: "Parametro de entrada que iremos passar no body de nossa requisição"
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findProductStockLess:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - stock
+            properties:
+              stock:
+                type: integer
+                format: int64
+                description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: stock
+          description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+          in: query
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findProductStockGreater:
+    post:
+      description: "Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - stock
+            properties:
+              stock:
+                type: integer
+                format: int64
+                description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: stock
+          description: "Parametro de entrada qque iremos passar no body de nossa requisição"
+          in: query
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de Produtos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findAllRecord:
+    post:
+      description: "Query destinada para retornar lista de produtos contendo preços, VIA RECORD"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/productsWithPrice'
+                  minimum: 1
+                description: "Lista de todos produtos, com nome, quantidade em estoque e preço, VIA RECORD"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar lista de produtos contendo preços, VIA RECORD"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/productsWithPrice'
+                  minimum: 1
+                description: "Lista de todos produtos, com nome, quantidade em estoque e preço, VIA RECORD"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findByCategoriaDSL:
+    post:
+      description: "Query destinada para retornar lista de produtos dentro da categoria passada"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - categoria
+            properties:
+              categoria:
+                type: string
+                allOf:
+                - $ref: '#/definitions/categoria'
+                description: "Categoria passada, via ENUM"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/product'
+                  minimum: 1
+                description: "Lista de todos os produtos contidos dentro da categoria passada"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findDateBetween:
+    post:
+      description: "Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - date1
+              - date2
+            properties:
+              date1:
+                type: string
+                format: date
+                description: "Parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+              date2:
+                type: string
+                format: date
+                description: "Segundo parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/pedido'
+                  minimum: 1
+                description: "Lista de Pedidos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: date1
+          description: "Parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+          in: query
+          required: true
+          type: string
+          format: date
+        - name: date2
+          description: "Segundo parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+          in: query
+          required: true
+          type: string
+          format: date
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/pedido'
+                  minimum: 1
+                description: "Lista de Pedidos que obteremos como resposta"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/findByFinalValueGreater:
+    post:
+      description: "Query destinada para retornar Lista de Pedidos com valores finais com maior valor do que o parametro passado"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - value
+            properties:
+              value:
+                type: string
+                description: "Valor mínimo do pedido"
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/pedido'
+                  minimum: 1
+                description: "Lista de Pedidos de retorno"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Query destinada para retornar Lista de Pedidos com valores finais com maior valor do que o parametro passado"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: value
+          description: "Valor mínimo do pedido"
+          in: query
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - response
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/pedido'
+                  minimum: 1
+                description: "Lista de Pedidos de retorno"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/getMetadata:
+    post:
+      description: "Default 'getMetadata' query. Every service must handle this command and return metadata in the format requested."
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              metadataFormat:
+                type: string
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - metadata
+            properties:
+              metadata:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Default 'getMetadata' query. Every service must handle this command and return metadata in the format requested."
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: metadataFormat
+          description: ""
+          in: query
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - metadata
+            properties:
+              metadata:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/exportClient:
+    post:
+      description: ""
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - config
+            properties:
+              config:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/exportConfig'
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - exportJobId
+            properties:
+              exportJobId:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/exportProduct:
+    post:
+      description: ""
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - config
+            properties:
+              config:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/exportConfig'
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - exportJobId
+            properties:
+              exportJobId:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/exportPedido:
+    post:
+      description: ""
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - config
+            properties:
+              config:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/exportConfig'
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - exportJobId
+            properties:
+              exportJobId:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/queries/getDependencies:
+    post:
+      description: "Returns a list with all dependencies from this service, along with their respective versions"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - dependencies
+            properties:
+              dependencies:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/dependency'
+                  minimum: 1
+                description: "List with this service dependencies"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Returns a list with all dependencies from this service, along with their respective versions"
+      tags:
+        - Queries
+      x-senior-visibility: PRIVATE
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - dependencies
+            properties:
+              dependencies:
+                type: array
+                items:
+                  type: object
+                  allOf:
+                   - $ref: '#/definitions/dependency'
+                  minimum: 1
+                description: "List with this service dependencies"
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  /my_service/actions/odata:
+    post:
+      description: ""
+      tags:
+        - Actions
+      x-senior-visibility: PRIVATE
+      responses:
+        204:
+          description: No response
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/actions/importClient:
+    post:
+      description: ""
+      tags:
+        - Actions
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - config
+            properties:
+              config:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/importConfig'
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - importJobId
+            properties:
+              importJobId:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/actions/importProduct:
+    post:
+      description: ""
+      tags:
+        - Actions
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - config
+            properties:
+              config:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/importConfig'
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - importJobId
+            properties:
+              importJobId:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/actions/importPedido:
+    post:
+      description: ""
+      tags:
+        - Actions
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - config
+            properties:
+              config:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/importConfig'
+                description: ""
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: object
+            required:
+              - importJobId
+            properties:
+              importJobId:
+                type: string
+                description: ""
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  /my_service/signals/ativarCliente:
+    post:
+      description: "Primitiva para ativar cliente"
+      tags:
+        - Signals
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: string
+                description: "ID do cliente que iremos ativara"
+      responses:
+        202:
+          description: Accepted
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/signals/ativarProduct:
+    post:
+      description: "Primitava para ativar Produto"
+      tags:
+        - Signals
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: string
+                description: "ID do Produto que queremos ativar"
+      responses:
+        202:
+          description: Accepted
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  /my_service/events/productActivated:
+    post:
+      description: "Event para retornar mensagem quando ativarmos um Produto"
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: string
+                description: "ID do produto que foi ativado"
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/stockProduct:
+    post:
+      description: "Event para retornar mensagem quando o estoque do Produto zerar"
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: string
+                description: "ID do Produto que o estoque foi zerado"
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/importClientEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/importEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/exportClientEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/exportEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/importProductEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/importEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/exportProductEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/exportEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/importPedidoEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/importEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/exportPedidoEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/exportEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/importItemEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/importEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/events/exportItemEvent:
+    post:
+      description: ""
+      x-senior-event: true
+      tags:
+        - Events
+      parameters:
+        - name: input
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - eventpl
+            properties:
+              eventpl:
+                type: object
+                allOf:
+                 - $ref: '#/definitions/exportEventStatus'
+                description: ""
+      responses:
+        200:
+          description: OK
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  /my_service/entities/client:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/client'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/client'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/client'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/client'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: offset
+          in: query
+          type: number
+        - name: size
+          in: query
+          type: number
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/client'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/client/{id}:
+    put:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/client'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/client'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/client'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/client'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/client'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    delete:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/client/bulk:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - Bulk
+      parameters:
+        - name: entities
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/client'
+      responses:
+        200:
+          description: 'The bulk creation has created resources'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/product:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/product'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/product'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/product'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/product'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: offset
+          in: query
+          type: number
+        - name: size
+          in: query
+          type: number
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/product'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/product/{id}:
+    put:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/product'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/product'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/product'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/product'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/product'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    delete:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/product/bulk:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - Bulk
+      parameters:
+        - name: entities
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/product'
+      responses:
+        200:
+          description: 'The bulk creation has created resources'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/pedido:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/pedido'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/pedido'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/pedido'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/pedido'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: offset
+          in: query
+          type: number
+        - name: size
+          in: query
+          type: number
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/pedido'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/pedido/{id}:
+    put:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/pedido'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/pedido'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/pedido'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/pedido'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/pedido'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    delete:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/pedido/bulk:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - Bulk
+      parameters:
+        - name: entities
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/pedido'
+      responses:
+        200:
+          description: 'The bulk creation has created resources'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/item:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/item'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: object
+            allOf:
+             - $ref: '#/definitions/item'
+      responses:
+        200:
+          description: 'The created resource'
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: offset
+          in: query
+          type: number
+        - name: size
+          in: query
+          type: number
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/item/{id}:
+    put:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/item'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/item'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    delete:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/pedido/{parentId}/items:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+      responses:
+        200:
+          description: 'The created resources'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+      responses:
+        200:
+          description: 'The created resources'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          type: string
+        - name: offset
+          in: query
+          type: number
+        - name: size
+          in: query
+          type: number
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/pedido/{parentId}/items/{id}:
+    put:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/item'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    patch:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: entity
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/item'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    get:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/item'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+    delete:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - CRUD
+      x-senior-visibility: PRIVATE
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ok
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+  /my_service/entities/item/bulk:
+    post:
+      description: "Esta entidade pode ser customizada."
+      tags:
+        - Bulk
+      parameters:
+        - name: entities
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+      responses:
+        200:
+          description: 'The bulk creation has created resources'
+        401:
+          description: "Invalid Credentials"
+        default:
+          description: Error response
+          schema:
+            $ref: '#/definitions/genericError'
+  
+
+definitions:
+  categoria:
+    description: "ENUM para adicionar produtos em certas categorias"
+    type: string
+    enum:
+      - INFORMATICA
+      - MOVEIS
+      - PAPELARIA
+      - OUTROS
+  
+  
+  userNotificationKind:
+    description: "User notification kind."
+    type: string
+    enum:
+      - Operational
+      - Management
+      - News
+  
+  
+  userNotificationPriority:
+    description: "User notification priority."
+    type: string
+    enum:
+      - Error
+      - Alert
+      - None
+  
+  
+  eventEmailFormat:
+    description: "Format of the email"
+    type: string
+    enum:
+      - HTML
+      - PLAIN_TEXT
+  
+  
+  fieldType:
+    description: ""
+    type: string
+    enum:
+      - BINARY
+      - BOOLEAN
+      - DATE
+      - DATETIME
+      - LOCALDATETIME
+      - DOUBLE
+      - ENUM
+      - INTEGER
+      - MONEY
+      - STRING
+      - TIME
+  
+  
+  fileFormat:
+    description: ""
+    type: string
+    enum:
+      - CSV
+      - FLAT
+      - JSON
+      - XML
+  
+  
+  hookFunction:
+    description: ""
+    type: string
+    enum:
+      - BEFORE_PARSE
+      - BEFORE_CONVERSION
+      - ON_ERROR
+      - VALIDATE
+  
+  
+  eventType:
+    description: ""
+    type: string
+    enum:
+      - CHUNK
+      - DOWNLOAD
+      - ERROR
+      - FINISH
+      - START
+  
+  
+  errorStrategy:
+    description: ""
+    type: string
+    enum:
+      - CALL_SCRIPT
+      - IGNORE
+      - STOP
+  
+  
+  status:
+    description: ""
+    type: string
+    enum:
+      - DONE
+      - DONE_WITH_ERRORS
+      - DOWNLOADING
+      - ERROR
+      - NOT_STARTED
+      - RUNNING
+  
+  
+  errorType:
+    description: ""
+    type: string
+    enum:
+      - CONVERT_ERROR
+      - SERVICE_ERROR
+  
+  productsWithPrice:
+    description: "Record para retorno de Query"
+    type: object
+    required:
+      - name
+      - stock
+      - price
+    properties:
+      name:
+        type: string
+        description: ""
+      stock:
+        type: integer
+        format: int64
+        description: ""
+      price:
+        type: string
+        description: ""
+  
+  client:
+    description: "Entidade Cliente"
+    type: object
+    required:
+      - name
+      - cpf
+      - birthday
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "ID gerado automaticamente"
+      name:
+        type: string
+        description: "Nome do Cliente"
+      cpf:
+        type: string
+        description: "CPF do Cliente"
+      birthday:
+        type: string
+        format: date
+        description: "Data de nascimento do Cliente"
+      active:
+        type: boolean
+        description: "ACTIVE: verifica se o cliente está ativo ou não, para que haja apenas exclusão lógica do Cliente"
+        default: true
+  
+  product:
+    description: "Entidade Produto"
+    type: object
+    required:
+      - name
+      - description
+      - price
+      - stock
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "ID do produto gerado automaticamente"
+      name:
+        type: string
+        description: "Nome do Produto"
+      description:
+        type: string
+        description: "Descrição/Características do Produto"
+      price:
+        type: string
+        description: "Preço do Produto"
+      stock:
+        type: integer
+        format: int64
+        description: "Quantidade de Estoque do Produto"
+      active:
+        type: boolean
+        description: "Mesma lógica de active de CLIENTE, LER ACIMA"
+        default: true
+      categoria:
+        type: string
+        allOf:
+        - $ref: '#/definitions/categoria'
+        description: "Categoria no qual o produto está destinado, oriunda de ENUM"
+  
+  pedido:
+    description: "Entidade Pedido"
+    type: object
+    required:
+      - client
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "ID do Pedido, gerado automaticamente"
+      client:
+        type: object
+        allOf:
+         - $ref: '#/definitions/client'
+        description: "ID do Cliente que está realizando o Pedido"
+      items:
+        type: array
+        items:
+          type: object
+          allOf:
+           - $ref: '#/definitions/item'
+        description: "Lista de Itens de Produtos que contém no Pedido"
+      orderDate:
+        type: string
+        format: date
+        description: "Data de realização do Pedido"
+      finalValue:
+        type: string
+        description: "Valor Final do Pedido, somando os valor totais dos itens do Pedido"
+  
+  item:
+    description: ""
+    type: object
+    required:
+      - product
+      - quantity
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "ID do Item, gerado automaticamente"
+      pedido:
+        type: object
+        allOf:
+         - $ref: '#/definitions/pedido'
+        description: "ID do Pedido do qual este item pertence"
+      product:
+        type: object
+        allOf:
+         - $ref: '#/definitions/product'
+        description: "ID do Produto do qual este item consiste"
+      quantity:
+        type: integer
+        format: int64
+        description: "Quantidade de produtos dentro do Item"
+      unitaryValue:
+        type: string
+        description: "Valor unitário do Item, referente ao preço do Produto"
+      totalValue:
+        type: string
+        description: "Valor Total referente a quantidade de itens multiplicando com seu valor unitário"
+  
+  notifyUserEventPayload:
+    description: "Represents a regular user event notification payload"
+    discriminator: _discriminator
+    type: object
+    required:
+      - notificationKind
+      - notificationPriority
+      - notificationSubject
+      - notificationContent
+      - sourceDomain
+      - sourceService
+      - destinationUser
+      - _discriminator
+    properties:
+      notificationClass:
+        type: string
+        description: "Class of notification"
+      notificationOrigin:
+        type: string
+        description: "Origin of notification. Free text. Optional."
+      notificationKind:
+        type: string
+        allOf:
+        - $ref: '#/definitions/userNotificationKind'
+        description: "Notification kind."
+      notificationPriority:
+        type: string
+        allOf:
+        - $ref: '#/definitions/userNotificationPriority'
+        description: "Notification priority."
+      notificationSubject:
+        type: string
+        description: "Notification subject."
+      notificationContent:
+        type: string
+        description: "Notification content."
+      sourceDomain:
+        type: string
+        description: "Domain that generates the notification."
+      sourceService:
+        type: string
+        description: "Service that generates the notification."
+      destinationUser:
+        type: string
+        description: "Username of the destination user."
+      link:
+        type: string
+        description: "Notification link"
+      _discriminator:
+        type: string
+        description: ""
+  
+  emailNotifyUserEventPayload:
+    description: "Represents an email notification payload"
+    allOf:
+    - $ref: '#/definitions/notifyUserEventPayload'
+    -
+      type: object
+      required:
+        - from
+      properties:
+        from:
+          type: string
+          description: "Email sender address"
+        sendTo:
+          type: array
+          items:
+            type: string
+          description: "Additional recipients to send the email to"
+        format:
+          type: string
+          allOf:
+          - $ref: '#/definitions/eventEmailFormat'
+          description: "Email format"
+  
+  pushNotifyUserEventPayload:
+    description: "Represents a push notification payload"
+    allOf:
+    - $ref: '#/definitions/notifyUserEventPayload'
+    -
+      type: object
+      required:
+        - applicationId
+      properties:
+        applicationId:
+          type: string
+          description: "Apple/Google application id"
+  
+  blobReference:
+    description: "Default blob reference type. Every service defines its own."
+    type: object
+    required:
+      - targetObjectId
+    properties:
+      domainName:
+        type: string
+        description: "The domain the blob belongs to."
+      serviceName:
+        type: string
+        description: "The service the blob belongs to."
+      targetObjectId:
+        type: string
+        description: "The basic id of the blob."
+      targetCopyId:
+        type: string
+        description: "The id of the blob copy."
+  
+  basicErrorPayload:
+    description: "Default error payload type. Every service defines its own."
+    type: object
+    properties:
+      message:
+        type: string
+        description: "The user-facing error message, if any."
+      errorCode:
+        type: string
+        description: "The program-accessible (and service-specific) error code."
+  
+  importError:
+    description: ""
+    type: object
+    required:
+      - errorType
+      - lineNumber
+      - bean
+      - message
+      - exceptionClass
+    properties:
+      errorType:
+        type: string
+        allOf:
+        - $ref: '#/definitions/errorType'
+        description: ""
+      lineNumber:
+        type: integer
+        format: int64
+        description: ""
+      bean:
+        type: string
+        description: ""
+      message:
+        type: string
+        description: ""
+      exceptionClass:
+        type: string
+        description: ""
+  
+  fielddto:
+    description: ""
+    type: object
+    required:
+      - id
+      - name
+      - fieldType
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: ""
+      name:
+        type: string
+        description: ""
+      fieldType:
+        type: string
+        allOf:
+        - $ref: '#/definitions/fieldType'
+        description: ""
+      start:
+        type: integer
+        format: int64
+        description: ""
+      size:
+        type: integer
+        format: int64
+        description: ""
+      maskPattern:
+        type: string
+        description: ""
+  
+  hookdto:
+    description: ""
+    type: object
+    required:
+      - hookFunction
+      - script
+    properties:
+      hookFunction:
+        type: string
+        allOf:
+        - $ref: '#/definitions/hookFunction'
+        description: ""
+      script:
+        type: string
+        description: ""
+  
+  layoutdto:
+    description: ""
+    type: object
+    required:
+      - id
+      - description
+      - fileFormat
+      - errorStrategy
+      - skipLines
+      - fields
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: ""
+      description:
+        type: string
+        description: ""
+      fileFormat:
+        type: string
+        allOf:
+        - $ref: '#/definitions/fileFormat'
+        description: ""
+      errorStrategy:
+        type: string
+        allOf:
+        - $ref: '#/definitions/errorStrategy'
+        description: ""
+      delimiter:
+        type: string
+        description: ""
+      skipLines:
+        type: integer
+        format: int64
+        description: ""
+      fields:
+        type: array
+        items:
+          type: object
+          allOf:
+           - $ref: '#/definitions/fielddto'
+          minimum: 1
+        description: ""
+      hooks:
+        type: array
+        items:
+          type: object
+          allOf:
+           - $ref: '#/definitions/hookdto'
+        description: ""
+  
+  importReport:
+    description: ""
+    type: object
+    required:
+      - id
+      - startTime
+      - endTime
+      - uri
+      - beanClass
+      - serviceClass
+      - layout
+      - sucessCount
+      - errorsCount
+      - filteredCount
+      - skippedCount
+    properties:
+      id:
+        type: string
+        description: ""
+      startTime:
+        type: string
+        format: date-time
+        description: ""
+      endTime:
+        type: string
+        format: date-time
+        description: ""
+      uri:
+        type: string
+        description: ""
+      beanClass:
+        type: string
+        description: ""
+      serviceClass:
+        type: string
+        description: ""
+      layout:
+        type: object
+        allOf:
+         - $ref: '#/definitions/layoutdto'
+        description: ""
+      sucessCount:
+        type: integer
+        format: int64
+        description: ""
+      errorsCount:
+        type: integer
+        format: int64
+        description: ""
+      filteredCount:
+        type: integer
+        format: int64
+        description: ""
+      skippedCount:
+        type: integer
+        format: int64
+        description: ""
+      importErrors:
+        type: array
+        items:
+          type: object
+          allOf:
+           - $ref: '#/definitions/importError'
+        description: ""
+  
+  exportEventStatus:
+    description: ""
+    type: object
+    required:
+      - importerId
+      - eventType
+      - recordCount
+    properties:
+      importerId:
+        type: string
+        description: ""
+      eventType:
+        type: string
+        allOf:
+        - $ref: '#/definitions/eventType'
+        description: ""
+      recordCount:
+        type: integer
+        format: int64
+        description: ""
+  
+  importEventStatus:
+    description: ""
+    type: object
+    required:
+      - importerId
+      - eventType
+      - status
+      - recordCount
+    properties:
+      importerId:
+        type: string
+        description: ""
+      eventType:
+        type: string
+        allOf:
+        - $ref: '#/definitions/eventType'
+        description: ""
+      status:
+        type: string
+        allOf:
+        - $ref: '#/definitions/status'
+        description: ""
+      errorMessage:
+        type: string
+        description: ""
+      recordCount:
+        type: integer
+        format: int64
+        description: ""
+      importReport:
+        type: object
+        allOf:
+         - $ref: '#/definitions/importReport'
+        description: ""
+  
+  exportConfig:
+    description: ""
+    type: object
+    required:
+      - uri
+      - layout
+      - async
+      - errorStrategy
+    properties:
+      uri:
+        type: string
+        description: ""
+      layout:
+        type: object
+        allOf:
+         - $ref: '#/definitions/layoutdto'
+        description: ""
+      async:
+        type: boolean
+        description: ""
+      errorStrategy:
+        type: string
+        description: ""
+  
+  importConfig:
+    description: ""
+    type: object
+    required:
+      - uri
+      - layout
+      - async
+      - batchSize
+      - errorStrategy
+    properties:
+      uri:
+        type: string
+        description: ""
+      layout:
+        type: object
+        allOf:
+         - $ref: '#/definitions/layoutdto'
+        description: ""
+      async:
+        type: boolean
+        description: ""
+      batchSize:
+        type: integer
+        format: int64
+        description: ""
+      errorStrategy:
+        type: string
+        allOf:
+        - $ref: '#/definitions/errorStrategy'
+        description: ""
+  
+  dependency:
+    description: "Represents a service dependency"
+    type: object
+    required:
+      - domain
+      - service
+      - version
+    properties:
+      domain:
+        type: string
+        description: "Domain of the dependency service"
+      service:
+        type: string
+        description: "Name of the dependency service"
+      version:
+        type: string
+        description: "Version of the dependency service"
+
+  genericError:
+    properties:
+      message:
+        type: string
+        description: Messaging describing the error.
+      reason:
+        type: string
+        description: A symbolic code identifying the category of the reason of the error.
+        enum:
+          - BAD_REQUEST
+          - UNAUTHORIZED
+          - PAYMENT_REQUIRED
+          - FORBIDDEN
+          - OBJECT_NOT_FOUND
+          - REQUEST_TIMEOUT
+          - GONE
+          - UNPROCESSABLE
+          - INTERNAL_ERROR
+          - NOT_IMPLEMENTED
+          - SERVICE_UNAVAILABLE
+          - INSUFFICIENT_STORAGE

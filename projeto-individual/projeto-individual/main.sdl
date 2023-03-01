@@ -1,0 +1,282 @@
+domain my_domain
+
+service my_service {
+    endpoints {
+
+        query helloWorld {
+            in {
+                who : string
+            }
+            out {
+                helloWorldMessage : string
+            }
+        }
+
+                //  =============> CLIENTE <=============
+
+
+                "Query destinada para retornar Lista de Clientes com nome contendo parte do parametro name, passado na nossa requisição"
+                query findByName{
+                    in {
+                    "Parametro que iremos passar no body de nossa requisição"
+                        name: string
+                    }
+                    out {
+                    "Lista de Clientes que obteremos como resposta"
+                        response: client*
+                    }
+                }
+                "Query destinada para retornar Cliente com CPF igual ao passado como parametro"
+                query findByCpf{
+                    in {
+                     "Parametro que iremos passar no body de nossa requisição"
+                        cpf: string
+                    }
+                    out {
+                    "Cliente que obteremos como resposta"
+                        response: client*
+                    }
+                }
+                "Query destinada para encontrar Clientes com nascimento no mesmo dia"
+                query findByBirthday {
+                    in {
+                        "Parametro que iremos passar no body de nossa requisição (FORMATO: 'YYY-MM-DD')"
+                        birthday: date
+                    }
+                    out {
+                        "Clientes que obteremos como resposta"
+                        response: client*
+                    }
+                }
+                "Query destinada para encontrar Clientes que estão ativos ou não dentro do sistema"
+                query findByActiveTrue{
+                    in {
+                        "Parametro que iremos passar no body de nossa requisição: true ou false)"
+                        active: boolean
+                    }
+                    out{
+                        "Clientes que obteremos como resposta"
+                        response: client*
+                    }
+                }
+                //  =============> PRODUTO <=============
+                "Query destinada para retornar Lista de Produtos com preço com maior valor do que o passado no parametro value"
+                query findPriceGreater{
+                    in {
+                    "Parametro que iremos passar no body de nossa requisição"
+                        value: money
+                    }
+                    out{
+                    "Lista de Produtos que obteremos como resposta"
+                        response: product*
+                    }
+                }
+                "Query destinada para retornar Lista de Produtos com nome igual ou semelhante ao valor passado no parametro nome"
+                query findProductByName {
+                    in {
+                    "Parametro de entrada que iremos passar no body de nossa requisição"
+                        name: string
+                    }
+                    out {
+                    "Lista de Produtos que obteremos como resposta"
+                        response: product*
+                    }
+                }
+                "Query destinada para retornar Lista de Produtos com preço menor que o valor passado no parametro price"
+                query findProductPriceLess{
+                    in {
+                    "Parametro de entrada que iremos passar no body de nossa requisição"
+                        price: money
+                    }
+                    out {
+                    "Lista de Produtos que obteremos como resposta"
+                        response: product*
+                    }
+                }
+                "Query destinada para retornar Lista de Produtos com estoque menor que o valor passado no parametro stock"
+                query findProductStockLess {
+                    in {
+                        "Parametro de entrada qque iremos passar no body de nossa requisição"
+                        stock: integer
+                    }
+                    out {
+                        "Lista de Produtos que obteremos como resposta"
+                        response: product*
+                    }
+                }
+                "Query destinada para retornar Lista de Produtos com estoque maior que o valor passado no parametro stock"
+                query findProductStockGreater {
+                    in {
+                        "Parametro de entrada qque iremos passar no body de nossa requisição"
+                        stock: integer
+                    }
+                    out {
+                        "Lista de Produtos que obteremos como resposta"
+                        response: product*
+                    }
+                }
+                "Query destinada para retornar lista de produtos contendo preços, VIA RECORD"
+                query findAllRecord{
+
+                    out {
+                    "Lista de todos produtos, com nome, quantidade em estoque e preço, VIA RECORD"
+                        response: productsWithPrice*
+                    }
+                }
+                "Query destinada para retornar lista de produtos dentro da categoria passada"
+                query findByCategoriaDSL{
+                    in {
+                    "Categoria passada, via ENUM"
+                         categoria: categoria
+                    }
+                    out {
+                    "Lista de todos os produtos contidos dentro da categoria passada"
+                        response : product*
+
+                    }
+                }
+                //  =============> PEDIDO <=============
+                "Query destinada para retornar Lista de Pedidos com data de criação entre as duas datas passadas nos parametros date1 e date2"
+                query findDateBetween {
+                    in {
+                        "Parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+                        date1: date
+                        "Segundo parametro de entrada que iremos passar no body de nossa requisição FORMATO: 'YYYY-MM-DD'"
+                        date2: date
+                    }
+                    out {
+                        "Lista de Pedidos que obteremos como resposta"
+                        response: pedido*
+                    }
+                }
+
+                "Query destinada para retornar Lista de Pedidos com valores finais com maior valor do que o parametro passado"
+                query findByFinalValueGreater {
+                    in {
+                    "Valor mínimo do pedido"
+                        value: money
+                    }
+                    out {
+                    "Lista de Pedidos de retorno"
+                        response: pedido*
+                    }
+                }
+                "Primitiva para ativar cliente"
+                signal ativarCliente{
+                    in {
+                    "ID do cliente que iremos ativara"
+                        id: string
+                    }
+                }
+                "Primitava para ativar Produto"
+                signal ativarProduct{
+                    in {
+                       "ID do Produto que queremos ativar"
+                        id: string
+                    }
+                }
+                "Event para retornar mensagem quando ativarmos um Produto"
+                event productActivated{
+                    payload{
+                    "ID do produto que foi ativado"
+                        id: string
+                    }
+                }
+                "Event para retornar mensagem quando o estoque do Produto zerar"
+                event stockProduct{
+                    payload{
+                        "ID do Produto que o estoque foi zerado"
+                        id: string
+                    }
+                }
+
+
+
+    }
+    types {
+    // define records and enumerations here
+
+            "Record para retorno de Query"
+            record productsWithPrice{
+                name: string
+                stock: integer
+                price: money
+            }
+
+            "ENUM para adicionar produtos em certas categorias"
+            enumeration categoria{
+                INFORMATICA
+                MOVEIS
+                PAPELARIA
+                OUTROS
+
+            }
+
+    }
+    entities {
+            "Entidade Cliente"
+            entity client{
+                "ID gerado automaticamente"
+                id: uuid?
+                "Nome do Cliente"
+                name: string
+                "CPF do Cliente"
+                cpf: string
+                "Data de nascimento do Cliente"
+                birthday: date
+                "ACTIVE: verifica se o cliente está ativo ou não, para que haja apenas exclusão lógica do Cliente"
+                //"Ao criar um cliente, será setado como active = true"
+                //"Ao deletar um cliente, não excluímos fisicamente do DB, apenas setamos como active= false"
+                active: boolean? default: true
+            }
+
+            "Entidade Produto"
+            entity product{
+                "ID do produto gerado automaticamente"
+                id: uuid?
+                "Nome do Produto"
+                name: string
+                "Descrição/Características do Produto"
+                description: string
+                "Preço do Produto"
+                price: money
+                "Quantidade de Estoque do Produto"
+                stock: integer
+                "Mesma lógica de active de CLIENTE, LER ACIMA"
+                active: boolean? default: true
+                "Categoria no qual o produto está destinado, oriunda de ENUM"
+                categoria: categoria?
+
+            }
+
+            "Entidade Pedido"
+            entity pedido{
+                "ID do Pedido, gerado automaticamente"
+                id: uuid?
+                "ID do Cliente que está realizando o Pedido"
+                client: client
+                "Lista de Itens de Produtos que contém no Pedido"
+                items: item?*
+                "Data de realização do Pedido"
+                orderDate: date?
+                "Valor Final do Pedido, somando os valor totais dos itens do Pedido"
+                finalValue: money?
+            }
+
+            entity item{
+                "ID do Item, gerado automaticamente"
+                id: uuid?
+                "ID do Pedido do qual este item pertence"
+                pedido: pedido?
+                "ID do Produto do qual este item consiste"
+                product: product
+                "Quantidade de produtos dentro do Item "
+                quantity: integer
+                "Valor unitário do Item, referente ao preço do Produto"
+                unitaryValue: money?
+                "Valor Total referente a quantidade de itens multiplicando com seu valor unitário"
+                totalValue: money?
+            }
+
+    }
+} 

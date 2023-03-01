@@ -1,0 +1,819 @@
+{
+	"version": "0.0.1",
+	"edlVersion": "31.1.1",
+	"app": "projeto-individual",
+	"domain": "my_domain",
+	"service": "my_service",
+	"enumType": "string",
+	"enumerations": {
+		"categoria": {
+			"name": "categoria",
+			"values": [
+				"INFORMATICA",
+				"MOVEIS",
+				"PAPELARIA",
+				"OUTROS"
+			]
+		}
+	},
+	"entities": {
+		"client": {
+			"id": "id",
+			"name": "client",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"name": {
+					"name": "name",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"cpf": {
+					"name": "cpf",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"birthday": {
+					"name": "birthday",
+					"type": "date",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"active": {
+					"name": "active",
+					"type": "boolean",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false,
+					"default": true
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "cpf",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "birthday",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"cpf",
+					"birthday",
+					"active"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "cpf",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "birthday",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"cpf",
+					"birthday",
+					"active"
+				]
+			}
+		},
+		"product": {
+			"id": "id",
+			"name": "product",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"name": {
+					"name": "name",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"description": {
+					"name": "description",
+					"type": "string",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"price": {
+					"name": "price",
+					"type": "money",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"stock": {
+					"name": "stock",
+					"type": "integer",
+					"thousandSeparator": ".",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"active": {
+					"name": "active",
+					"type": "boolean",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false,
+					"default": true
+				},
+				"categoria": {
+					"name": "categoria",
+					"type": "categoria",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "description",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "price",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "stock",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "categoria",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"description",
+					"price",
+					"stock",
+					"active",
+					"categoria"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "name",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "description",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "price",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "stock",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "active",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "categoria",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"name",
+					"description",
+					"price",
+					"stock",
+					"active",
+					"categoria"
+				]
+			}
+		},
+		"pedido": {
+			"id": "id",
+			"name": "pedido",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"client": {
+					"name": "client",
+					"type": "client",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"items": {
+					"name": "items",
+					"type": "item",
+					"optional": true,
+					"hidden": false,
+					"multivalued": true,
+					"readOnly": false
+				},
+				"orderDate": {
+					"name": "orderDate",
+					"type": "date",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"finalValue": {
+					"name": "finalValue",
+					"type": "money",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "orderDate",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "finalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"orderDate",
+					"finalValue"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "orderDate",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "finalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"orderDate",
+					"finalValue"
+				]
+			},
+			"relationships": {
+				"item": [
+					{
+						"type": "composition",
+						"attribute": "items",
+						"ownerEntity": "pedido",
+						"entityName": "item",
+						"optional": true,
+						"filterDependent": false,
+						"multivalued": true,
+						"lookup": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "quantity",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "unitaryValue",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "totalValue",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"quantity",
+								"unitaryValue",
+								"totalValue"
+							]
+						},
+						"advancedSearch": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "quantity",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "unitaryValue",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "totalValue",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"quantity",
+								"unitaryValue",
+								"totalValue"
+							]
+						}
+					}
+				]
+				,"client": [
+					{
+						"type": "aggregation",
+						"attribute": "client",
+						"ownerEntity": "pedido",
+						"entityName": "client",
+						"optional": false,
+						"filterDependent": false,
+						"multivalued": false,
+						"lookup": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "cpf",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "birthday",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"cpf",
+								"birthday",
+								"active"
+							]
+						},
+						"advancedSearch": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "cpf",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "birthday",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"cpf",
+								"birthday",
+								"active"
+							]
+						}
+					}
+				]
+			}
+		},
+		"item": {
+			"id": "id",
+			"name": "item",
+			"customizable": true,
+			"external": false,
+			"slots": {
+				"id": {
+					"name": "id",
+					"type": "string",
+					"format": "uuid",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": true
+				},
+				"pedido": {
+					"name": "pedido",
+					"type": "pedido",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"product": {
+					"name": "product",
+					"type": "product",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"quantity": {
+					"name": "quantity",
+					"type": "integer",
+					"thousandSeparator": ".",
+					"optional": false,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"unitaryValue": {
+					"name": "unitaryValue",
+					"type": "money",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				},
+				"totalValue": {
+					"name": "totalValue",
+					"type": "money",
+					"optional": true,
+					"hidden": false,
+					"multivalued": false,
+					"readOnly": false
+				}
+			},
+			"lookup": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "quantity",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "unitaryValue",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "totalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"quantity",
+					"unitaryValue",
+					"totalValue"
+				]
+			},
+			"advancedSearch": {
+				"searchFields": [
+					{
+						"name": "id",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "quantity",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "unitaryValue",
+						"optional": true,
+						"multiple": false
+					},
+					{
+						"name": "totalValue",
+						"optional": true,
+						"multiple": false
+					}
+				],
+				"displayFields": [
+					"id",
+					"quantity",
+					"unitaryValue",
+					"totalValue"
+				]
+			},
+			"relationships": {
+				"product": [
+					{
+						"type": "aggregation",
+						"attribute": "product",
+						"ownerEntity": "item",
+						"entityName": "product",
+						"optional": false,
+						"filterDependent": false,
+						"multivalued": false,
+						"lookup": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "description",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "price",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "stock",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "categoria",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"description",
+								"price",
+								"stock",
+								"active",
+								"categoria"
+							]
+						},
+						"advancedSearch": {
+							"searchFields": [
+								{
+									"name": "id",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "name",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "description",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "price",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "stock",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "active",
+									"optional": true,
+									"multiple": false
+								},
+								{
+									"name": "categoria",
+									"optional": true,
+									"multiple": false
+								}
+							],
+							"displayFields": [
+								"id",
+								"name",
+								"description",
+								"price",
+								"stock",
+								"active",
+								"categoria"
+							]
+						}
+					}
+				]
+			}
+		}
+	},
+	"translations": {
+		"my_domain.my_service.categoria_informatica": "",
+		"my_domain.my_service.categoria_moveis": "",
+		"my_domain.my_service.categoria_papelaria": "",
+		"my_domain.my_service.categoria_outros": "",
+		"my_domain.my_service.client": "Entidade Cliente",
+		"my_domain.my_service.client_id": "ID gerado automaticamente",
+		"my_domain.my_service.client_name": "Nome do Cliente",
+		"my_domain.my_service.client_cpf": "CPF do Cliente",
+		"my_domain.my_service.client_birthday": "Data de nascimento do Cliente",
+		"my_domain.my_service.client_active": "ACTIVE: verifica se o cliente está ativo ou não, para que haja apenas exclusão lógica do Cliente",
+		"my_domain.my_service.item": "",
+		"my_domain.my_service.item_id": "ID do Item, gerado automaticamente",
+		"my_domain.my_service.item_pedido": "ID do Pedido do qual este item pertence",
+		"my_domain.my_service.item_product": "ID do Produto do qual este item consiste",
+		"my_domain.my_service.item_quantity": "Quantidade de produtos dentro do Item ",
+		"my_domain.my_service.item_unitary_value": "Valor unitário do Item, referente ao preço do Produto",
+		"my_domain.my_service.item_total_value": "Valor Total referente a quantidade de itens multiplicando com seu valor unitário",
+		"my_domain.my_service.pedido": "Entidade Pedido",
+		"my_domain.my_service.pedido_id": "ID do Pedido, gerado automaticamente",
+		"my_domain.my_service.pedido_client": "ID do Cliente que está realizando o Pedido",
+		"my_domain.my_service.pedido_items": "Lista de Itens de Produtos que contém no Pedido",
+		"my_domain.my_service.pedido_order_date": "Data de realização do Pedido",
+		"my_domain.my_service.pedido_final_value": "Valor Final do Pedido, somando os valor totais dos itens do Pedido",
+		"my_domain.my_service.product": "Entidade Produto",
+		"my_domain.my_service.product_id": "ID do produto gerado automaticamente",
+		"my_domain.my_service.product_name": "Nome do Produto",
+		"my_domain.my_service.product_description": "Descrição/Características do Produto",
+		"my_domain.my_service.product_price": "Preço do Produto",
+		"my_domain.my_service.product_stock": "Quantidade de Estoque do Produto",
+		"my_domain.my_service.product_active": "Mesma lógica de active de CLIENTE, LER ACIMA",
+		"my_domain.my_service.product_categoria": "Categoria no qual o produto está destinado, oriunda de ENUM"
+	}
+}

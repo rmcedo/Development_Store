@@ -1,0 +1,1 @@
+alter table product add constraint unico_name UNIQUE(name);

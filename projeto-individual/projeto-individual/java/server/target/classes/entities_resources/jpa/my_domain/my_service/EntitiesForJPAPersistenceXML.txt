@@ -1,0 +1,5 @@
+<!-- GENERATED ENTITIES: 2023-03-01 15:56:03:726 -->
+<class>br.com.senior.mydomain.myservice.ClientEntity</class>
+<class>br.com.senior.mydomain.myservice.ProductEntity</class>
+<class>br.com.senior.mydomain.myservice.PedidoEntity</class>
+<class>br.com.senior.mydomain.myservice.ItemEntity</class>

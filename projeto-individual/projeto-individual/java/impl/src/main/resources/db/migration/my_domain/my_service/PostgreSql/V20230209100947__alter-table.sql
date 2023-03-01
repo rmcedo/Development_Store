@@ -1,0 +1,1 @@
+alter table item alter column total_value drop not null;

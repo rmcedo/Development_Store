@@ -1,0 +1,105 @@
+{
+    "domainDescription": "my_domain",
+    "domain": "my_domain",
+    "service": "my_service",
+    "description": "Projeto Individual",
+    "resources": [
+      {
+        "name": "client",
+        "label": "platform.authorization.my_domain_my_service_entities_client_label",
+        "description": "platform.authorization.my_domain_my_service_entities_client_description",
+        "URI": "res://senior.com.br/my_domain/my_service/entities/client",
+        "actions" : [
+          {
+            "name": "Incluir",
+            "label": "platform.authorization.my_domain_my_service_entities_client_action_incluir_label"
+          },
+          {
+            "name": "Editar",
+            "label": "platform.authorization.my_domain_my_service_entities_client_action_editar_label"
+          },
+          {
+            "name": "Excluir",
+            "label": "platform.authorization.my_domain_my_service_entities_client_action_excluir_label"
+          },
+          {
+            "name": "Visualizar",
+            "label": "platform.authorization.my_domain_my_service_entities_client_action_visualizar_label"
+          }
+        ]
+      },
+      {
+        "name": "product",
+        "label": "platform.authorization.my_domain_my_service_entities_product_label",
+        "description": "platform.authorization.my_domain_my_service_entities_product_description",
+        "URI": "res://senior.com.br/my_domain/my_service/entities/product",
+        "actions" : [
+          {
+            "name": "Incluir",
+            "label": "platform.authorization.my_domain_my_service_entities_product_action_incluir_label"
+          },
+          {
+            "name": "Editar",
+            "label": "platform.authorization.my_domain_my_service_entities_product_action_editar_label"
+          },
+          {
+            "name": "Excluir",
+            "label": "platform.authorization.my_domain_my_service_entities_product_action_excluir_label"
+          },
+          {
+            "name": "Visualizar",
+            "label": "platform.authorization.my_domain_my_service_entities_product_action_visualizar_label"
+          }
+        ]
+      },
+      {
+        "name": "pedido",
+        "label": "platform.authorization.my_domain_my_service_entities_pedido_label",
+        "description": "platform.authorization.my_domain_my_service_entities_pedido_description",
+        "URI": "res://senior.com.br/my_domain/my_service/entities/pedido",
+        "actions" : [
+          {
+            "name": "Incluir",
+            "label": "platform.authorization.my_domain_my_service_entities_pedido_action_incluir_label"
+          },
+          {
+            "name": "Editar",
+            "label": "platform.authorization.my_domain_my_service_entities_pedido_action_editar_label"
+          },
+          {
+            "name": "Excluir",
+            "label": "platform.authorization.my_domain_my_service_entities_pedido_action_excluir_label"
+          },
+          {
+            "name": "Visualizar",
+            "label": "platform.authorization.my_domain_my_service_entities_pedido_action_visualizar_label"
+          }
+        ]
+      },
+      {
+        "name": "item",
+        "label": "platform.authorization.my_domain_my_service_entities_item_label",
+        "description": "platform.authorization.my_domain_my_service_entities_item_description",
+        "URI": "res://senior.com.br/my_domain/my_service/entities/item",
+        "actions" : [
+          {
+            "name": "Incluir",
+            "label": "platform.authorization.my_domain_my_service_entities_item_action_incluir_label"
+          },
+          {
+            "name": "Editar",
+            "label": "platform.authorization.my_domain_my_service_entities_item_action_editar_label"
+          },
+          {
+            "name": "Excluir",
+            "label": "platform.authorization.my_domain_my_service_entities_item_action_excluir_label"
+          },
+          {
+            "name": "Visualizar",
+            "label": "platform.authorization.my_domain_my_service_entities_item_action_visualizar_label"
+          }
+        ]
+      }
+    ]
+
+}

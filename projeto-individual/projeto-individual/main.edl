@@ -1,0 +1,52 @@
+domain my_domain
+
+entities {
+	//define global properties here
+	//enableNoRepositoryBean: false
+	generateExtraResources: true
+	enableExternalAnnotation: true
+	securityType: secure
+}
+
+service my_service {
+        entities{
+
+                entity pedido{
+
+                        relationships{
+                            OneToMany(items){
+                                type:composition
+                                opposite: pedido
+                            }
+                            ManyToOne(client){
+                                type:aggregation
+                            }
+                            }
+                }
+                entity item{
+                        relationships{
+                            ManyToOne(pedido){
+                                type: aggregation
+                            }
+                            ManyToOne(product){
+                                type:aggregation
+                            }
+                        }
+                }
+                entity product{
+                    tableName: product
+                            unique{
+                                uk_name{
+                                columns:[name]
+                            }
+                        }
+                }
+                entity client{
+                generateCustomValidator: true
+                }
+        }
+
+
+
+
+}
