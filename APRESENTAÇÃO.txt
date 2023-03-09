@@ -1,0 +1,86 @@
+DIAGRAMA DE CLASSES
+
+(OneToMany)A entidade "pedido" tem uma cardinalidade de 1 para muitos com a entidade "item". Isso significa que um pedido pode ter vários itens associados a ele, mas cada item só pode estar associado a um único pedido.
+
+(ManyToOne)A entidade "item" tem uma cardinalidade de muitos para um com a entidade "pedido". Isso significa que muitos itens podem estar associados a um único pedido.
+
+(ManyToOne)A entidade "item" tem uma cardinalidade de muitos para um com a entidade "product". Isso significa que muitos itens podem estar associados a um único produto.
+
+A entidade "product" não tem relacionamentos explícitos com outras entidades.
+
+(ManyToOne)A entidade "client" tem uma cardinalidade de muitos para um com a entidade "pedido". Isso significa que muitos pedidos podem estar associados a um único cliente. 
+
+ENTIDADES SDL
+
+Ao criar o cliente e produto, já deixamos o atributo active como true.
+
+
+Em pedido teremos uma lista de Itens, a data do pedido coloquei como opcional para setar ela com o LocalDate.now. O valor final é obtido pela soma dos valores totais dos itens
+
+Em Item, temos a quantidade e o valor unitário, que com a multiplicação dos atributos, resulta no valor total
+
+
+ENTIDADES EDL
+
+Temos os relacionamentos, que foram explicados anteriormente, nesse caso só utilizei composition em Pedido, relacionado com items, pois não faz sentido o item estar existindo não fazendo parte do Pedido. 
+Na entidade produto adicionei uma constraint unique em nome para não ficar adicionando o mesmo produto várias vezes, poderia ter adicionado um atributo como Código do Livro, que seria único, mas para exemplificar utilizei só o nome.
+E apenas em Client adicionei um CustomValidator
+
+Criar Pedido
+
+Para criação de um pedido, faço uma validação que irá ser mostrada no próximo slide.
+Faço um forEach de Itens para atualizar o estoque do produto de acordo com a quantidade solicitada no pedido
+
+Daí irei lançar um evento, do qual lança uma mensagem para outro departamento que o estoque daquele produto zerou.
+
+Seto a data do pedido de acordo com a data atual do sistema e para finalizar crio o pedido.
+
+
+VALIDAÇÕES
+
+na validação, dentro do forEach de Itens eu busco o ID do produto, seto o valor unitário de item de acordo com o preço do produto. Faço a leitura da quantidade e multiplico pelo valor unitário para setar o valor total daquele item dentro do pedido
+Em seguida eu vejo se tenho a quantidade solicitada em estoque, caso não tenha, lanço uma exceção.
+e finalizando o forEach, vou atualizando essa variavel, adicionando o valor total os itens para cada item  e salvo o valor final do Pedido com o valor dessa variavel no final do ForEach.
+
+
+DELETAR CLIENTE
+
+Realizo uma exclusão lógica aqui, para não deletar fisicamente no banco de dados aquele cliente.
+
+FILTRO DE PEDIDOS DE ACORDO COM O VALOR FINAL
+
+Aqui realizei uma query no qual tenho um valor de entrada e como resposta, só obtenho os pedidos com valor final maiores do que o valor de entrada. Nesse caso usei o QueryMethod
+
+SIGNAL
+
+Utilizei um signal para ativar Cliente e Produtos... passo o ID e realizo a ativação, embaixo tenho o código onde isso é realizado. Também fica como exemplo o uso de gestão de recursos, onde teria usabilidade desse recurso apenas quem tem permissão de delete e update.
+
+@QUERY
+
+Fiz um exemplo de query utilizando o @Query, bem simples, no qual listo os clientes de acordo com o atributo que eu passo, se eu passar o active = false, só listo aqueles que estão desativados.
+ Poderia ter feito também utilizando o QueryMethods, mas fiz assim para exemplificar.
+
+
+QUERYMETHODS
+
+Também fiz uma outra query para listar produtos de acordo com um valor de estoque que passo, tanto para maior como para menor estoque atual do que o valor passado
+
+
+QUERYDSL
+
+Para ter a utilização de um QueryDSL, fiz um filtro de busca de acordo com a categoria de um produto. Para listagem, como no exemplo do slide, produtos que estão na categoria INFORMATICA.
+
+MIGRAÇÃO FLYWAY
+
+Ao fim do projeto tive várias migrações, mas isso aconteceu porque fui pensando em novos métodos e fui adicionando colunas ou mudando atributos.
+
+USO DO TRANSLATIONHUB
+
+Utilizei o translantionHub para as mensagens fixas dentro do sistema.
+
+
+USO DO EVENT
+
+realizei dois usos de event, um do qual ele avisa aos interessados que um produto está de volta ao estoque. Nesse caso, de exemplo, apenas lança uma mensagem no console.
+
+Também utilizo o Event dentro da criação e atualização de pedido, dentro de uma validação, que caso o produto fique com o estoque zerado, também lance uma mensagem no console avisando que o estoque do produto zerou.
